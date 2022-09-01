@@ -6,16 +6,41 @@
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "test": "jest"
   },
   "dependencies": {
+    "@types/eslint": "^8.4.6",
     "expo": "~46.0.9",
     "expo-status-bar": "~1.4.0",
     "react": "18.0.0",
     "react-native": "0.69.5"
   },
-  "devDependencies": {
-    "@babel/core": "^7.12.9"
+  "jest": {
+    "preset": "react-native",
+    "collectCoverage": true,
+    "coverageReporters": ["json", "html"]
   },
-  "private": true
+  "devDependencies": {
+    "@babel/core": "^7.12.9",
+    "eslint": "^8.23.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.2.5",
+    "eslint-plugin-promise": "^6.0.1",
+    "eslint-plugin-react": "^7.31.1"
+  },
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EvSivtsova/ratify.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EvSivtsova/ratify/issues"
+  },
+  "homepage": "https://github.com/EvSivtsova/ratify#readme",
+  "description": ""
 }

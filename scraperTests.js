@@ -1,6 +1,5 @@
 require('dotenv').config();
 var HTMLParser = require('node-html-parser');
-// const fs = require('fs');
 
 class ScraperApi {
   constructor(){
@@ -50,15 +49,16 @@ class ScraperApi {
 
   ratEventsResults(eventApiResult){
     let totalShows = this.showCalculator(eventApiResult)
-    const removeWhitesmpaceRegex = /^(?=\n)$|^\s*|\s*$|\n\n+/gm;
+    const removeWhitespaceRegex = /^(?=\n)$|^\s*|\s*$|\n\n+/gm;
     eventApiResult = eventApiResult.querySelector('p').nextElementSibling;
-    this.eventList.push(eventApiResult.textContent.replace(removeWhitesmpaceRegex, ""));
+    let event = (eventApiResult.textContent.replace(removeWhitespaceRegex, ""));
+    this.eventList.push({event})
     for (let i = 0; i < 6; i++){
-      console.log(i)
       eventApiResult = eventApiResult.nextElementSibling;
-      this.eventList.push(eventApiResult.textContent.replace(removeWhitesmpaceRegex, ""));
+      event = (eventApiResult.textContent.replace(removeWhitespaceRegex, ""));
+      this.eventList.push({event})
     }
-    this.eventList = JSON.parse(this.eventList)
+    // this.eventList = JSON.parse(this.eventList)
     return this.eventList
   }
 
@@ -84,7 +84,8 @@ const scraper = new ScraperApi();
 // })
 
 scraper.ratEventsScraper().then(()=>{
-  scraper.eventList.forEach(event=>console.log(event));
+  console.log(scraper.eventList)
+  // scraper.eventList.forEach(item => console.log(item))
 })
 
 

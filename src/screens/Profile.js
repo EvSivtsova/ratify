@@ -1,12 +1,14 @@
-import { Text, View, Button } from 'react-native';
-import { styles } from '../styles'
+import { Text, SafeAreaView, Button, StyleSheet } from 'react-native';
+import { styles } from '../styles';
+import { UserInfoList, } from '../components/profilePage/list';
 
 export function Profile({ navigation }) {
   return (
-    <View style={styles.container}>
-      <Text>My profile</Text>
-      <Button title="Go to Home" onPress={() => navigation.navigate('Welcome')} />
+    <SafeAreaView>
+      <Text style={styles.baseText}>My Profile</Text>
+      <UserInfoList/>
+      <Button  title="Go to Home" onPress={() => navigation.navigate('Welcome')} />
       <Button title="Go back" onPress={() => navigation.goBack()} />
-    </View>
+    </SafeAreaView>
   );
 }

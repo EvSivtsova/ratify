@@ -22,7 +22,7 @@ app.set('port', port);
 * Connect to MongoDB
 **/
 
-const mongoDbUrl = Db || 'mongodb://0.0.0.0/ratify';
+const mongoDbUrl = Db || 'mongodb://0.0.0.0/ratify';//might need to change this to MONGODDB_URI and have a process.env connection
 mongoose.connect(mongoDbUrl, {
   useNewUrlParser: true,
   useUnifiedTopology: true

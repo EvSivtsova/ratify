@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config({path: './.env'});
 var HTMLParser = require('node-html-parser');
 
 class ScraperApi {
@@ -75,7 +75,7 @@ class ScraperApi {
    }
 }
 
-const scraper = new ScraperApi();
+// const scraper = new ScraperApi();
 
 // scraper.ratFoodScraper("Apple").then(()=>{
 //   scraper.matchedFoods.forEach(food=>{
@@ -83,10 +83,10 @@ const scraper = new ScraperApi();
 //   });
 // })
 
-scraper.ratEventsScraper().then(()=>{
-  console.log(scraper.eventList)
+// scraper.ratEventsScraper().then(()=>{
+//   console.log(scraper.eventList)
   // scraper.eventList.forEach(item => console.log(item))
-})
+// })
 
 
 module.exports = ScraperApi;

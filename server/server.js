@@ -6,6 +6,8 @@ const logger = require('morgan');
 // sets the session
 const session = require('cookie-session');
 const methodOverride = require('method-override');
+const ScraperApi = require('./controllers/scraperController');
+const scraper = new ScraperApi()
 
 const app = express();
 
@@ -60,5 +62,12 @@ app.use((err, req, res) => {
   res.status(err.status || 500);
   res.render('error');
 });
+
+app.get('/events',  (req,res) =>{
+  scraper.ratEventsScraper().then(()=>{
+      console.log(scraper.eventList)
+  })
+})
+
 
 module.exports = app;

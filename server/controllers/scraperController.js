@@ -39,7 +39,7 @@ class ScraperApi {
   
   async ratEventsScraper(){
     try{
-      const scraperapiClient = require('scraperapi-sdk')('32f62b57f92e5e31396fcba5743d1be8')
+      const scraperapiClient = require('scraperapi-sdk')(process.env.KEY)
       let eventApiResult = await scraperapiClient.get('https://www.nfrs.org/shows/next/')
       eventApiResult = this.parseHTML(eventApiResult)
       this.ratEventsResults(eventApiResult)

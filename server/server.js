@@ -65,7 +65,7 @@ app.use((err, req, res) => {
 
 app.get('/events',  (req,res) =>{
   scraper.ratEventsScraper().then(()=>{
-    res.json(scraper.eventList)
+    return scraper.eventList
 })
 })
 

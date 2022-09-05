@@ -38,7 +38,7 @@ class ScraperApi {
   
   async ratEventsScraper(){
     try{
-      const scraperapiClient = require('scraperapi-sdk')(process.env.KEY)
+      const scraperapiClient = require('scraperapi-sdk')('32f62b57f92e5e31396fcba5743d1be8')
       let eventApiResult = await scraperapiClient.get('https://www.nfrs.org/shows/next/')
       eventApiResult = this.parseHTML(eventApiResult)
       this.ratEventsResults(eventApiResult)
@@ -75,7 +75,7 @@ class ScraperApi {
    }
 }
 
-// const scraper = new ScraperApi();
+const scraper = new ScraperApi();
 
 // scraper.ratFoodScraper("Apple").then(()=>{
 //   scraper.matchedFoods.forEach(food=>{
@@ -83,10 +83,10 @@ class ScraperApi {
 //   });
 // })
 
-// scraper.ratEventsScraper().then(()=>{
-//   console.log(scraper.eventList)
+scraper.ratEventsScraper().then(()=>{
+  console.log(scraper.eventList)
   // scraper.eventList.forEach(item => console.log(item))
-// })
+})
 
 
 module.exports = ScraperApi;

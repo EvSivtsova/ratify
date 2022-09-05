@@ -1,6 +1,6 @@
-import { Text, SafeAreaView, Button, StyleSheet } from 'react-native';
+import { Text, SafeAreaView, Button } from 'react-native';
 import { styles } from '../styles';
-import { UserInfoList, } from '../components/profilePage/list';
+import { UserInfoList, } from '../components/ProfilePage/UserInfoList';
 
 export function Profile({ navigation }) {
   return (

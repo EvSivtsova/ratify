@@ -1,14 +1,31 @@
 import { Text, View, Button } from 'react-native';
 import { styles } from '../styles'
+import LoginScreen, { SocialButton } from "react-native-login-screen";
 
 export function LogIn({ navigation }) {
   return (
-    <View style={styles.container}>
-      <Text>Log in</Text>
-      <Button title="Go to Home" onPress={() => navigation.navigate('Welcome')} />
-      <Button title="My profile" onPress={() => navigation.navigate('Profile')} />
-      <Button title="Animal" onPress={() => navigation.navigate('Animal')} />
-      <Button title="Go back" onPress={() => navigation.goBack()} />
-    </View>
+        <LoginScreen
+      logoImageSource={require("../../assets/ratifyLogo.png")}
+      onLoginPress={() => {}}
+      onHaveAccountPress={() => {}}
+      onEmailChange={(email: string) => {}}
+      onPasswordChange={(password: string) => {}}
+    >
+      <SocialButton 
+      text="Continue with Google"
+      imageSource={require("../../assets/google.png")}
+      onPress={() => {}} />
+      <SocialButton
+        text="Continue with Facebook"
+        imageSource={require("../../assets/FacebookLogo.png")}
+        onPress={() => {}}
+      />
+      <SocialButton
+        text="Continue with Twitter"
+        
+        imageSource={require("../../assets/twitter.png")}
+        onPress={() => {}}
+      />
+    </LoginScreen>
   );
 }

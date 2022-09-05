@@ -7,7 +7,7 @@ export function Events ({ navigation }) {
   React.useEffect(() => {
     fetch('http://localhost:8080/events').then((response) => response.json())
       .then((data) => {
-        setData(JSON.stringify(data))
+        setData(data)
       })
       .catch((error) => console.log(error))
   }, [])
@@ -15,7 +15,10 @@ export function Events ({ navigation }) {
     <ScrollView>
     <View style={styles.container}>
       <Text>Upcoming Events:</Text>
-      {data && (<Text style={{ flex: 1, flexDirection: 'row' }}>{data}</Text>)}
+      {/* {data && (<Text style={{ flex: 1, flexDirection: 'row' }}>{data.map((event)=> {
+        <Text>{event}</Text>
+      })}</Text>)} */}
+      {data && (<Text style={{ flex: 1, flexDirection: 'row' }}>{data[0].event}</Text>)}
       <Button title="Go to Home" onPress={() => navigation.navigate('Welcome')} />
       <Button title="Go back" onPress={() => navigation.goBack()} />
     </View>

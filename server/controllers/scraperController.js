@@ -9,7 +9,6 @@ class ScraperApi {
 
   async ratFoodScraper(searchStr){
     try {
-      this.matchedFoods = [];
     const scraperapiClient = require('scraperapi-sdk')(process.env.KEY)
     let foodResult = await scraperapiClient.get('http://www.isamurats.co.uk/vegetables-and-fruits.html')
     searchStr = this.capitaliseSearch(searchStr)
@@ -27,6 +26,7 @@ class ScraperApi {
   ratFoodResults(searchStr, foodResult){
     const foodSearch = foodResult.querySelectorAll('strong');
     foodSearch.forEach(food=> {
+      this.matchedFoods = [];
       if (food.textContent.includes(searchStr)){
         let foodName = food.textContent;
         let foodContent = (food.nextSibling).textContent;
@@ -39,7 +39,6 @@ class ScraperApi {
   
   async ratEventsScraper(){
     try{
-      this.eventList = [];
       const scraperapiClient = require('scraperapi-sdk')('32f62b57f92e5e31396fcba5743d1be8')
       let eventApiResult = await scraperapiClient.get('https://www.nfrs.org/shows/next/')
       eventApiResult = this.parseHTML(eventApiResult)
@@ -54,6 +53,7 @@ class ScraperApi {
     const removeWhitespaceRegex = /^(?=\n)$|^\s*|\s*$|\n\n+/gm;
     eventApiResult = eventApiResult.querySelector('p').nextElementSibling;
     let event = (eventApiResult.textContent.replace(removeWhitespaceRegex, ""));
+    this.eventList = [];
     this.eventList.push({event})
     for (let i = 0; i < 6; i++){
       eventApiResult = eventApiResult.nextElementSibling;

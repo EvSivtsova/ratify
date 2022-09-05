@@ -56,6 +56,14 @@ app.get('/events',  (req,res) =>{
   })
 })
 
+app.get('/foodSafety', (req,res) => {
+  //For this feature we need data from the react sreen 'Food' and use that as 
+  //data to use in the scraper here \/ \/ \/ \/\/\/\/\/
+  scraper.ratFoodScraper(NOT CORRECT SEE COMMENT ABOVE).then(()=> {
+    res.json(scraper.matchedFoods)
+  })
+})
+
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
   next(createError(404));

@@ -52,7 +52,7 @@ app.get('/events',  (req,res) =>{
   // res.json('test')
   // const scraper = new ScraperApi()
   scraper.ratEventsScraper().then(()=>{
-    return (scraper.eventList)
+    res.json(scraper.eventList)
   })
 })
 

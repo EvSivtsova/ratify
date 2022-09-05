@@ -49,8 +49,6 @@ const sessionChecker = (req, res, next) => {
 };
 
 app.get('/events',  (req,res) =>{
-  // res.json('test')
-  // const scraper = new ScraperApi()
   scraper.ratEventsScraper().then(()=>{
     res.json(scraper.eventList)
   })

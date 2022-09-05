@@ -5,8 +5,10 @@ import { styles } from '../styles'
 export function Events({ navigation }) {
   const [data, setData] = useState("LOADING")
   React.useEffect(()=> {
-    fetch('http://localhost:8080/events').then((response)=>
-    setData(JSON.stringify(response)))
+    fetch('http://localhost:8080/events').then((response)=>response.json())
+    .then((data)=> {
+      setData(JSON.stringify(data))
+    })
   },[])
   return (
 

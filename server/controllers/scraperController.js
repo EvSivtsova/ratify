@@ -29,7 +29,7 @@ class ScraperApi {
       if (food.textContent.includes(searchStr)){
         let foodName = food.textContent;
         let foodContent = (food.nextSibling).textContent;
-        this.matchedFoods.push([foodName, foodContent]);
+        this.matchedFoods.push({foodName, foodContent});
       }
     })
     return this.matchedFoods;

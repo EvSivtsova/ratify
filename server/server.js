@@ -58,8 +58,8 @@ app.get('/events',  (req,res) =>{
 
 app.get('/foodSafety', (req,res) => {
   //For this feature we need data from the react sreen 'Food' and use that as 
-  //data to use in the scraper here \/ \/ \/ \/\/\/\/\/
-  scraper.ratFoodScraper(NOT CORRECT SEE COMMENT ABOVE).then(()=> {
+  //data to use in the scraper. Using 'Apple' as placeholder
+  scraper.ratFoodScraper('Apple').then(()=> {
     res.json(scraper.matchedFoods)
   })
 })

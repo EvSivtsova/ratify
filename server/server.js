@@ -7,6 +7,9 @@ const logger = require('morgan');
 const session = require('cookie-session');
 const methodOverride = require('method-override');
 
+//add routes
+const usersRouter = require("./routes/users");
+
 const app = express();
 
 app.use(logger('dev'));
@@ -44,6 +47,10 @@ const sessionChecker = (req, res, next) => {
     next();
   }
 };
+
+// route setup
+console.log("I'm in server.js. Looking for a route");
+app.use("/users", usersRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

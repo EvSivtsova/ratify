@@ -15,21 +15,29 @@ const Db = process.env.ATLAS_URI;
 * Get port from environment and store in Express.
 */
 
-const port = normalizePort(process.env.PORT || 8080);
+const port = normalizePort(process.env.PORT || 8000);
 app.set('port', port);
 
 /**
 * Connect to MongoDB
 **/
 
-const mongoDbUrl = Db || 'mongodb://0.0.0.0/ratify';
+// const mongoDbUrl = Db || 'mongodb://0.0.0.0/ratify';
+const mongoDbUrl = 'mongodb://0.0.0.0/ratify';
 mongoose.connect(mongoDbUrl, {
   useNewUrlParser: true,
-  useUnifiedTopology: true
-});
+  useUnifiedTopology: true,
+})
+.then(() => {
+  console.log("Successfully connected to MongoDB Atlas!");
+})
+.catch((error) => {
+  console.log("Unable to connect to MongoDB Atlas!");
+  console.error(error);
+})
 
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+// const db = mongoose.connection;
+// db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 /**
 * Create HTTP server.

@@ -49,6 +49,7 @@ const sessionChecker = (req, res, next) => {
 };
 
 app.get('/events',  (req,res) =>{
+  //how to clear between calls
   scraper.ratEventsScraper().then(()=>{
     res.json(scraper.eventList)
   })

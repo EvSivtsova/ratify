@@ -9,6 +9,7 @@ class ScraperApi {
 
   async ratFoodScraper(searchStr){
     try {
+      this.matchedFoods = [];
     const scraperapiClient = require('scraperapi-sdk')(process.env.KEY)
     let foodResult = await scraperapiClient.get('http://www.isamurats.co.uk/vegetables-and-fruits.html')
     searchStr = this.capitaliseSearch(searchStr)
@@ -38,6 +39,7 @@ class ScraperApi {
   
   async ratEventsScraper(){
     try{
+      this.eventList = [];
       const scraperapiClient = require('scraperapi-sdk')('32f62b57f92e5e31396fcba5743d1be8')
       let eventApiResult = await scraperapiClient.get('https://www.nfrs.org/shows/next/')
       eventApiResult = this.parseHTML(eventApiResult)

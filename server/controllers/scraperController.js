@@ -75,7 +75,7 @@ class ScraperApi {
    }
 }
 
-const scraper = new ScraperApi();
+// const scraper = new ScraperApi();
 
 // scraper.ratFoodScraper("Apple").then(()=>{
 //   scraper.matchedFoods.forEach(food=>{
@@ -83,10 +83,10 @@ const scraper = new ScraperApi();
 //   });
 // })
 
-scraper.ratEventsScraper().then(()=>{
-  console.log(scraper.eventList)
-  // scraper.eventList.forEach(item => console.log(item))
-})
+// scraper.ratEventsScraper().then(()=>{
+//   console.log(scraper.eventList)
+//   // scraper.eventList.forEach(item => console.log(item))
+// })
 
 
 module.exports = ScraperApi;

@@ -18,6 +18,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'));
 
+
 app.use(
   session({
     key: 'user_sid',
@@ -47,6 +48,14 @@ const sessionChecker = (req, res, next) => {
   }
 };
 
+app.get('/events',  (req,res) =>{
+  // res.json('test')
+  // const scraper = new ScraperApi()
+  scraper.ratEventsScraper().then(()=>{
+    return (scraper.eventList)
+  })
+})
+
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
   next(createError(404));
@@ -63,11 +72,7 @@ app.use((err, req, res) => {
   res.render('error');
 });
 
-app.get('/events',  (req,res) =>{
-  scraper.ratEventsScraper().then(()=>{
-    return scraper.eventList
-})
-})
+
 
 
 module.exports = app;

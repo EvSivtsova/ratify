@@ -16,6 +16,8 @@
     "@syncfusion/ej2-maps": "^20.2.45",
     "@syncfusion/ej2-react-maps": "^20.2.45",
     "@types/eslint": "^8.4.6",
+    "dotenv": "^16.0.2",
+    "node-html-parser": "^5.4.2",
     "bingmaps-react": "^1.2.10",
     "core-js": "^3.25.0",
     "expo": "~46.0.9",

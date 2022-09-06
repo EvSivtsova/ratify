@@ -16,9 +16,24 @@ export const styles = StyleSheet.create({
       borderRadius:7
   },
   eventContainer: {
-    flex: 2,
-    backgroundColor: '#869471',
-    alignItems: 'center'
-    // justifyContent: 'center',
+      width: 320,
+      backgroundColor: '#869471',
+      borderColor: '#869471',
+      borderWidth: 3,
+      // justifyContent: 'center',
+      borderRadius: 5
+  },
+  SafeArea: {
+    flex: 1,
+    backgroundColor: '#F4FBF4',
+  },
+  normalText:{
+    fontSize: 16, fontFamily: 'Helvetica', fontStyle: 'normal'
+  },
+  largeText:{
+    fontSize: 20, fontFamily: 'Helvetica-Bold ', fontStyle: 'normal'
+  },
+  navigationButton:{
+    
   }
 });

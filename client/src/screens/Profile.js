@@ -13,9 +13,10 @@ export function Profile({ navigation }) {
       <Text>My profile</Text>
       <Button
         title="Go to Home"
+        color="#869471"
         onPress={() => navigation.navigate("Welcome")}
       />
-      <Button title="Go back" onPress={() => navigation.goBack()} />
+      <Button title="Go back" color="#869471" onPress={() => navigation.goBack()} />
     </View>
   );
 }

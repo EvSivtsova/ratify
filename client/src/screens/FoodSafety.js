@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
-import { Text, View, Button } from 'react-native';
+import { Text, View, Button, ScrollView } from 'react-native';
 import { styles } from '../styles'
-
+import {Food} from '../../assets/components/foodComponent';
 export function FoodSafety({ navigation }) {
 
 
@@ -17,15 +17,26 @@ export function FoodSafety({ navigation }) {
       .catch((error) => console.log(error))
   }, [])
 
-
+  const renderFood = () => {
+    return data.map((foodName, index)=> {
+      return <Food key={index} data={foodName}/>
+    })
+  }
   
   return (
-
+    <ScrollView>
     <View style={styles.container}>
-      <Text>Food data:</Text>
-        <Text>{data}</Text>
+      <Text>Food:</Text>
+      <ScrollView>
+        {loading ? (
+          <Text>loading...</Text>
+      ):
+      <></>}
+      {renderFood()}
+      </ScrollView>
       <Button title="Go to Home" onPress={() => navigation.navigate('Welcome')} />
       <Button title="Go back" onPress={() => navigation.goBack()} />
     </View>
+    </ScrollView>
   );
 }

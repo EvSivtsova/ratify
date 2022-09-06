@@ -12,6 +12,7 @@ export  function Food({data}){
       borderRadius: 5
     }}>
       <Text>{data.foodName}</Text>
+      <Text>{data.foodContent}</Text>
     </View>
   );
 }

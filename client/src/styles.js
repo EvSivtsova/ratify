@@ -16,11 +16,10 @@ export const styles = StyleSheet.create({
       borderRadius:7
   },
   eventContainer: {
-      width: 320,
-      backgroundColor: '#869471',
-      borderColor: '#869471',
+    width: 320,
+      borderColor: '#dcdcdc',
       borderWidth: 3,
-      // justifyContent: 'center',
+      justifyContent: 'center',
       borderRadius: 5
   },
   SafeArea: {

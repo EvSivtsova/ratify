@@ -6,7 +6,7 @@ export  function Event({data}){
   return (
     <View>
       <View style={styles.eventContainer}>
-        <Text style={{fontSize: 16, fontFamily: 'Nova', fontStyle: 'normal'}}>{data.event}</Text>
+        <Text style={{fontSize: 16}}>{data.event}</Text>
       </View>
     <Text></Text>
     </View>

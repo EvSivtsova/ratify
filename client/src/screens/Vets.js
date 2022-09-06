@@ -1,12 +1,16 @@
-import { Text, View, Button } from 'react-native';
-import { styles } from '../styles'
-
+import React, { useState } from "react";
+//import WebView
+import { WebView } from "react-native-webview";
+import map from "./map.html";
 export function Vets({ navigation }) {
   return (
-    <View style={styles.container}>
-      <Text>My profile</Text>
-      <Button title="Go to Home" onPress={() => navigation.navigate('Welcome')} />
-      <Button title="Go back" onPress={() => navigation.goBack()} />
-    </View>
+    <WebView
+      style={{ flex: 1 }}
+      originWhitelist={["*"]}
+      source={map}
+      style={{ marginTop: 20 }}
+      javaScriptEnabled={true}
+      domStorageEnabled={true}
+    />
   );
 }

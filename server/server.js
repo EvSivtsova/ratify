@@ -64,7 +64,13 @@ app.get('/foodSafety', (req,res) => {
     })
 })
 // route setup
+
 app.use("/users", usersRouter);
+
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname, '..', 'client/src/screens/SignUp.js'));
+//   // res.sendFile(path.join(__dirname, "..", "..", "client/app.js"));
+// });
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

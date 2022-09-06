@@ -8,7 +8,7 @@ export function Events ({ navigation }) {
   const [data, setData] = useState([])
   
   React.useEffect(() => {
-    fetch('http://localhost:8080/events').then((response) => response.json())
+    fetch('http://localhost:8000/events').then((response) => response.json())
       .then((data) => {
         setData(data)
         setLoading(false)

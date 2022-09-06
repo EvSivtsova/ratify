@@ -26,3 +26,41 @@ This a
 
 ## Installation
 
+You will either need the application for Expo on your phone (Android or IOS) from the link below
+---
+Or you will need to install Xcode on a Mac OS device.
+---
+
+Open 2 instances of terminal inside the base directory 'Ratify'.
+
+1. In one terminal, navigate into the server folder with
+```
+cd server/
+```
+2. Then run the command below to install dependencies for server.
+```
+npm i
+```
+3. Run the command below to set up the server.
+```
+```
+You should see a similar response
+!!! RESPONSE IMAGE
+4. In the other terminal, navigate into the 'client' folder with
+```
+cd client/
+```
+5. Then run the command below to install dependencies for client.
+```
+npm i
+```
+6. Finally, run the command below to start the client instance.
+```
+npm start
+```
+Either scan the QR code in your app or follow instructions to set up mobile simulator.
+---screenshot of instructions---
+
+Alternatively...
+## Video demonstration link
+

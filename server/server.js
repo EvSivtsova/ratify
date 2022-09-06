@@ -6,6 +6,8 @@ const logger = require('morgan');
 // sets the session
 const session = require('cookie-session');
 const methodOverride = require('method-override');
+const ScraperApi = require('./controllers/scraperController');
+const scraper = new ScraperApi()
 
 //add routes
 const usersRouter = require("./routes/users");
@@ -18,6 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'));
+
 
 app.use(
   session({
@@ -48,6 +51,25 @@ const sessionChecker = (req, res, next) => {
   }
 };
 
+app.get('/events',  (req,res) =>{
+  //how to clear between calls
+  scraper.ratEventsScraper().then(()=>{
+    res.json(scraper.eventList)
+  })
+})
+
+app.get('/foodSafety', (req,res) => {
+
+  let value = req.query.text
+  value = value.charAt(0).toUpperCase() + value.slice(1);
+  //For this feature we need data from the react sreen 'Food' and use that as 
+  //data to use in the scraper. Using 'Apple' as placeholder
+    console.log('value is', value)
+
+    scraper.ratFoodScraper(value).then(()=> {
+      res.json(scraper.matchedFoods)
+    })
+})
 // route setup
 console.log("I'm in server.js. Looking for a route");
 app.use("/users", usersRouter);
@@ -67,5 +89,8 @@ app.use((err, req, res) => {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
+
 
 module.exports = app;

@@ -3,13 +3,22 @@ import { Text, View, Button } from 'react-native';
 import { styles } from '../styles'
 
 export function FoodSafety({ navigation }) {
-  const [data, setData] = useState("LOADING")
-  React.useEffect(()=> {
-    fetch('http://localhost:8080/foodSafety').then((response)=>response.json())
-    .then((data)=> {
-      setData(JSON.stringify(data))
-    })
-  },[])
+
+
+  const [loading, setLoading]= useState([])
+  const [data, setData] = useState([])
+  
+  React.useEffect(() => {
+    fetch('http://localhost:8080/foodSafety').then((response) => response.json())
+      .then((data) => {
+        setData(data)
+        setLoading(false)
+      })
+      .catch((error) => console.log(error))
+  }, [])
+
+
+  
   return (
 
     <View style={styles.container}>

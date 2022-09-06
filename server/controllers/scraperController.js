@@ -25,8 +25,8 @@ class ScraperApi {
 
   ratFoodResults(searchStr, foodResult){
     const foodSearch = foodResult.querySelectorAll('strong');
+    this.matchedFoods = [];
     foodSearch.forEach(food=> {
-      this.matchedFoods = [];
       if (food.textContent.includes(searchStr)){
         let foodName = food.textContent;
         let foodContent = (food.nextSibling).textContent;

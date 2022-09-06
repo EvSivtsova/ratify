@@ -1,6 +1,7 @@
 const User = require('./user');
 const mongoose = require('mongoose');
-require('dotenv').config({ path: '../config.env' });
+// require('dotenv').config({ path: './models/config.env' });
+require('dotenv').config({ path: './config.env' });
 
 // const Db = process.env.ATLAS_URI || 'mongodb://0.0.0.0/ratify';
 // const Db = process.env.ATLAS_URI;
@@ -15,6 +16,12 @@ mongoose
   })
   .then(() => {
     console.log('connection established!');
+  })
+  .then(() => 
+    seedDB()
+  )
+  .then(() => {
+    mongoose.connection.close();
   })
   .catch((err) => {
     console.log(err);
@@ -65,15 +72,11 @@ const userSeeds = [
 ];
 
 const seedDB = async () => {
-  await User.deleteMany({});
+  const res = await User.deleteMany({});
   console.log("seeds deleted")
-  await User.insertMany(userSeeds);
+  const res2 = await User.insertMany(userSeeds);
   console.log("seeds saved")
-  console.log(userSeeds)
+  const allUsers = await User.find()
 };
-
-seedDB().then(() => {
-  mongoose.connection.close();
-});
 
 module.exports = userSeeds;

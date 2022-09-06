@@ -15,7 +15,7 @@ const UserSchema = new Schema({
     status: { type: Boolean, required: false, default: false },
     county: { type: String, required: false },
     association: { type: String, required: false },
-    website: { type: String, unique: true, required: false },
+    website: { type: String, required: false },
     required: false,
   },
   signupDate: {

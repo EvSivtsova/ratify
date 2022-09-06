@@ -5,7 +5,7 @@ import {Food} from '../../assets/components/foodComponent';
 export function FoodSafety({ navigation }) {
 
 
-  const [loading, setLoading]= useState([])
+  const [loading, setLoading]= useState(false)
   const [data, setData] = useState([])
    const [text, onChangeText] = useState("");
 
@@ -20,6 +20,7 @@ export function FoodSafety({ navigation }) {
   }
 
     const search = () => {
+      setLoading(true)
       fetch(`http://localhost:8080/foodSafety?text=${text}`).then((response) => response.json())
         .then((data) => {
           setData(data)

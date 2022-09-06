@@ -1,4 +1,4 @@
-const ScraperApi = require('../controllers/scraperController');
+const ScraperApi = require('../../controllers/scraperController');
 
 describe('ScraperApi tests for both Events and Food',() => {
   describe('events',() => {

@@ -1,6 +1,5 @@
 const User = require('./user');
 const mongoose = require('mongoose');
-// require('dotenv').config({ path: './models/config.env' });
 require('dotenv').config({ path: './config.env' });
 
 // const Db = process.env.ATLAS_URI || 'mongodb://0.0.0.0/ratify';

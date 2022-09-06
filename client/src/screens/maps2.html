@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8" />
+    <pre id="arrPrint"></pre>
+    <script>
+      let names = [];
+      fetch(
+        "https://dev.virtualearth.net/REST/v1/LocalSearch/?query=Pet%20Shop&userLocation=47.60265732,-122.33396912&key=Aqldnwj5FAF0Q1iTK2e8ua4aTj92NXWXN8LlkB30XMVeZ82zvknfcDR41QQxmIw5"
+      )
+        .then((x) => x.json())
+        .then((y) => {
+          var map = new Microsoft.Maps.Map("#myMap", {
+            credentials:
+              "Aqldnwj5FAF0Q1iTK2e8ua4aTj92NXWXN8LlkB30XMVeZ82zvknfcDR41QQxmIw5",
+            center: new Microsoft.Maps.Location(47.602038, -122.333964),
+          });
+          for (let i = 0; i < 15; i++) {
+            //let names = [];
+            const lon = JSON.stringify(
+              y.resourceSets[0].resources[i].point.coordinates[1],
+              null,
+              2
+            );
+            const lat = JSON.stringify(
+              y.resourceSets[0].resources[i].point.coordinates[0],
+              null,
+              2
+            );
+            const name = JSON.stringify(
+              y.resourceSets[0].resources[i].name,
+              null,
+              2
+            );
+            const address = JSON.stringify(
+              y.resourceSets[0].resources[i].addressLine,
+              null,
+              2
+            );
+            names.push(name, lon, lat, address);
+            console.log(name, lon, lat, address);
+            console.log(names);
+            //document.getElementById("arrPrint").innerHTML = names;
+
+            //var center = map.getCenter();
+            //Create custom Pushpin
+
+            var pin = new Microsoft.Maps.Pushpin(
+              new Microsoft.Maps.Location(lat, lon),
+              {
+                title: name,
+                subTitle: address,
+                text: "1",
+              }
+            );
+            map.entities.push(pin);
+            document.getElementById("arrPrint").innerHTML = names;
+          }
+        });
+
+      console.log(i);
+
+      console.log(names);
+    </script>
+    <script
+      type="text/javascript"
+      src="http://www.bing.com/api/maps/mapcontrol?callback=GetMap"
+      async
+      defer
+    ></script>
+  </head>
+  <body>
+    <div
+      id="myMap"
+      style="position: relative; width: 100%; height: 800px"
+    ></div>
+  </body>
+</html>

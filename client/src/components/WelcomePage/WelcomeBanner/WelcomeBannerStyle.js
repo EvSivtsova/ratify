@@ -5,7 +5,7 @@ export const WelcomeBannerStyle = StyleSheet.create({
     // flex: '1',
     // backgroundColor: '#F4FBF4',
     // marginHorizontal: 9,
-    // marginTop: 30,
+    // marginTop: 50,
     // paddingVertical: 30,
     // paddingHorizontal: 50,
     // borderRadius: 5,

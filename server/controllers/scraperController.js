@@ -75,13 +75,13 @@ class ScraperApi {
    }
 }
 
-// const scraper = new ScraperApi();
+const scraper = new ScraperApi();
 
-// scraper.ratFoodScraper("Apple").then(()=>{
-//   scraper.matchedFoods.forEach(food=>{
-//     console.log(food.join('\n'))
-//   });
-// })
+scraper.ratFoodScraper("Apple").then(()=>{
+  scraper.matchedFoods.forEach(food=>{
+    console.log(food)
+  });
+})
 
 // scraper.ratEventsScraper().then(()=>{
 //   console.log(scraper.eventList)

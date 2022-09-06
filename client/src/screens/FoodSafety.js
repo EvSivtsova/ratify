@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import { Text, View, Button, ScrollView, TextInput, SafeAreaView } from 'react-native';
 import { styles } from '../styles'
 import {Food} from '../../assets/components/foodComponent';
@@ -9,21 +9,24 @@ export function FoodSafety({ navigation }) {
   const [data, setData] = useState([])
    const [text, onChangeText] = useState("");
 
-  
-  React.useEffect(() => {
-    fetch('http://localhost:8080/foodSafety').then((response) => response.json())
-      .then((data) => {
-        setData(data)
-        setLoading(false)
-      })
-      .catch((error) => console.log(error))
-  }, [])
+
+
+
 
   const renderFood = () => {
     return data.map((foodName, index)=> {
       return <Food key={index} data={foodName}/>
     })
   }
+
+    const search = () => {
+      fetch(`http://localhost:8080/foodSafety?text=${text}`).then((response) => response.json())
+        .then((data) => {
+          setData(data)
+          setLoading(false)
+        })
+        .catch((error) => console.log(error))
+    }
   
   return (
     <SafeAreaView>
@@ -37,6 +40,9 @@ export function FoodSafety({ navigation }) {
         placeholder="eg 'Apple'"
         
         />
+        <Button
+        title='Search'
+        onPress={search}>Search</Button>
       <ScrollView>
         {loading ? (
           <Text>loading...</Text>

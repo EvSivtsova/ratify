@@ -8,8 +8,8 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   textBox: {
-      height: 25,
-      margin: 12,
+      height: 40,
+      margin: 6,
       width: 200,
       borderWidth: 1,
       padding: 10,

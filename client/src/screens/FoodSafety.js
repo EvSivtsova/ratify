@@ -21,7 +21,7 @@ export function FoodSafety({ navigation }) {
 
     const search = () => {
       setLoading(true)
-      fetch(`http://localhost:8080/foodSafety?text=${text}`).then((response) => response.json())
+      fetch(`http://localhost:8000/foodSafety?text=${text}`).then((response) => response.json())
         .then((data) => {
           setData(data)
           setLoading(false)

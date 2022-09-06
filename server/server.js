@@ -11,7 +11,6 @@ const scraper = new ScraperApi()
 
 //add routes
 const usersRouter = require("./routes/users");
-
 const app = express();
 
 app.use(logger('dev'));
@@ -20,7 +19,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'));
-
 
 app.use(
   session({
@@ -59,19 +57,13 @@ app.get('/events',  (req,res) =>{
 })
 
 app.get('/foodSafety', (req,res) => {
-
   let value = req.query.text
   value = value.charAt(0).toUpperCase() + value.slice(1);
-  //For this feature we need data from the react sreen 'Food' and use that as 
-  //data to use in the scraper. Using 'Apple' as placeholder
-    console.log('value is', value)
-
     scraper.ratFoodScraper(value).then(()=> {
       res.json(scraper.matchedFoods)
     })
 })
 // route setup
-console.log("I'm in server.js. Looking for a route");
 app.use("/users", usersRouter);
 
 // catch 404 and forward to error handler
@@ -89,8 +81,5 @@ app.use((err, req, res) => {
   res.status(err.status || 500);
   res.render('error');
 });
-
-
-
 
 module.exports = app;

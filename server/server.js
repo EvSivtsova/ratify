@@ -9,6 +9,9 @@ const methodOverride = require('method-override');
 const ScraperApi = require('./controllers/scraperController');
 const scraper = new ScraperApi()
 
+//add routes
+const usersRouter = require("./routes/users");
+
 const app = express();
 
 app.use(logger('dev'));
@@ -62,6 +65,9 @@ app.get('/foodSafety', (req,res) => {
     res.json(scraper.matchedFoods)
   })
 })
+// route setup
+console.log("I'm in server.js. Looking for a route");
+app.use("/users", usersRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

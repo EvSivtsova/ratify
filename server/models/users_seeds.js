@@ -2,7 +2,11 @@ const User = require('./user');
 const mongoose = require('mongoose');
 require('dotenv').config({ path: '../config.env' });
 
-const Db = process.env.ATLAS_URI || 'mongodb://0.0.0.0/ratify';
+// const Db = process.env.ATLAS_URI || 'mongodb://0.0.0.0/ratify';
+// const Db = process.env.ATLAS_URI;
+const Db = 'mongodb://0.0.0.0/ratify';
+
+console.log(Db);
 
 mongoose
   .connect(Db, {
@@ -45,7 +49,10 @@ const userSeeds = [
 
 const seedDB = async () => {
   await User.deleteMany({});
+  console.log("seeds deleted")
   await User.insertMany(userSeeds);
+  console.log("seeds saved")
+  console.log(userSeeds)
 };
 
 seedDB().then(() => {

@@ -43,6 +43,7 @@ npm i
 ```
 3. Run the command below to set up the server.
 ```
+npm start
 ```
 You should see a similar response
 !!! RESPONSE IMAGE

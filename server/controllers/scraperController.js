@@ -25,6 +25,7 @@ class ScraperApi {
 
   ratFoodResults(searchStr, foodResult){
     const foodSearch = foodResult.querySelectorAll('strong');
+    this.matchedFoods = [];
     foodSearch.forEach(food=> {
       if (food.textContent.includes(searchStr)){
         let foodName = food.textContent;
@@ -57,9 +58,7 @@ class ScraperApi {
     for (let i = 0; i < 6; i++){
       eventApiResult = eventApiResult.nextElementSibling;
       event = (eventApiResult.textContent.replace(removeWhitespaceRegex, ""));
-      this.eventList.push({event})
-    }
-    // this.eventList = JSON.parse(this.eventList)
+      this.eventList.push({event})}
     return this.eventList
   }
 

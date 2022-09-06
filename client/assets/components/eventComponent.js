@@ -6,9 +6,10 @@ export  function Event({data}){
     <View style={{
       // backgroundColor: '#a9a9a9',
       width: 320,
-      borderColor: '#dcdcdc',
+      backgroundColor: '#869471',
+      borderColor: '#869471',
       borderWidth: 3,
-      justifyContent: 'center',
+      // justifyContent: 'center',
       borderRadius: 5
     }}>
       <Text>{data.event}</Text>

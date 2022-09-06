@@ -7,4 +7,12 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  textBox: {
+      height: 25,
+      margin: 12,
+      width: 200,
+      borderWidth: 1,
+      padding: 10,
+      borderRadius:7
+  },
 });

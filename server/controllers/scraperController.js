@@ -58,9 +58,7 @@ class ScraperApi {
     for (let i = 0; i < 6; i++){
       eventApiResult = eventApiResult.nextElementSibling;
       event = (eventApiResult.textContent.replace(removeWhitespaceRegex, ""));
-      this.eventList.push({event})
-    }
-    // this.eventList = JSON.parse(this.eventList)
+      this.eventList.push({event})}
     return this.eventList
   }
 

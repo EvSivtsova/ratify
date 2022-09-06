@@ -1,12 +1,29 @@
-import { Text, View, Button } from 'react-native';
-import { styles } from '../styles'
+import { List } from "react-native-paper";
+import { Button } from "react-native";
+import React, { useState } from "react";
 
 export function Vets({ navigation }) {
+  const [expanded, setExpanded] = React.useState(true);
+
+  const handlePress = () => setExpanded(!expanded);
+
   return (
-    <View style={styles.container}>
-      <Text>My profile</Text>
-      <Button title="Go to Home" onPress={() => navigation.navigate('Welcome')} />
-      <Button title="Go back" onPress={() => navigation.goBack()} />
-    </View>
+    <List.Section title="Accordions">
+      <List.Accordion
+        title="List of Vets"
+        left={(props) => <List.Icon {...props} icon="folder" />}
+      >
+        <List.Item title="Local Vets" />
+        <Button title="Location" onPress={() => navigation.navigate("Map1")} />
+      </List.Accordion>
+
+      <List.Accordion
+        title="List of Pet Shops"
+        left={(props) => <List.Icon {...props} icon="folder" />}
+      >
+        <List.Item title="Local Pet Stores" />
+        <Button title="Location" onPress={() => navigation.navigate("Map2")} />
+      </List.Accordion>
+    </List.Section>
   );
 }

@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
-import { Text, View, Button, SafeAreaView, ScrollView } from 'react-native'
+import { Text, View, Button, SafeAreaView, ScrollView , Image} from 'react-native'
 import { styles } from '../styles'
-import {Event} from '../../assets/components/eventComponent'
+import { ButtonStyles } from '../components/WelcomePage/MainButtonsStyle'
+import {Event} from '../components/scraperPages/eventComponent'
+import { WelcomeBannerStyle } from '../components/WelcomePage/WelcomeBanner/WelcomeBannerStyle';
 export function Events ({ navigation }) {
 
   const [loading, setLoading]= useState([])
   const [data, setData] = useState([])
-  const [pet, setPet]= useState('Rats')
+  const [pet, setPet]= useState('')
   
   React.useEffect(() => {
     fetch('http://localhost:8000/events').then((response) => response.json())
@@ -39,7 +41,6 @@ export function Events ({ navigation }) {
 
 
     const combinedFunction = (value) => {
-      console.log(value);
       setPet(value);
       (value == 'Rats')? Events() : guineaEvents();
     }
@@ -53,22 +54,27 @@ export function Events ({ navigation }) {
   switch (pet){
     case 'Rats':
   return (
-    <SafeAreaView style={styles.SafeArea}>
+    <SafeAreaView style={WelcomeBannerStyle.container}>
     <ScrollView>
-    <View style={styles.container}>
-      <Text style={styles.largeText} >Upcoming  Rat Events:</Text>
+    <Image style={WelcomeBannerStyle.image} source={require('../../assets/NFRSlogo.png')}/>
+    <View>
+    <View style={ButtonStyles.button}>
+      <Text style={ButtonStyles.buttonTextLarge} >Upcoming Rat Events:</Text>
+      </View>
       <ScrollView>
         {loading ? (
-          <Text style={styles.normalText}>loading...</Text>
+          <View style={ButtonStyles.button}>
+          <Text style={ButtonStyles.buttonText}>loading...</Text>
+          </View>
           ):
           <></>}
       {renderEvent()}
       </ScrollView>
-      {(pet != 'Rats') ? <Button title="Rats" onPress={()=>combinedFunction('Rats')}/> : <></>}
-      {(pet != 'Guinea pigs') ? <Button title="Guinea Pigs" onPress={()=>combinedFunction('Guinea pigs')}/> : <></> }
-      {(pet != 'Tigers') ? <Button title="Tigers" onPress={()=>combinedFunction('Tigers')}/> : <></>}
-      <Button title="Go to Home" onPress={() => navigation.navigate('Welcome')} />
-      <Button title="Go back" onPress={() => navigation.goBack()} />
+      {(pet != 'Rats') ? <Button color="#869471" title="Rats" onPress={()=>combinedFunction('Rats')}/> : <></>}
+      {(pet != 'Guinea pigs') ? <Button color="#869471" title="Guinea Pigs" onPress={()=>combinedFunction('Guinea pigs')}/> : <></> }
+      {(pet != 'Tigers') ? <Button color="#869471" title="Tigers" onPress={()=>combinedFunction('Tigers')}/> : <></>}
+      <Button   color="#869471" title="Go to Home" onPress={() => navigation.navigate('Welcome')} />
+      <Button  color="#869471" title="Go back" onPress={() => navigation.goBack()} />
     </View>
     </ScrollView>
           </SafeAreaView>
@@ -76,22 +82,27 @@ export function Events ({ navigation }) {
   break;
   case 'Guinea pigs':
     return (
-      <SafeAreaView style={styles.SafeArea}>
+      <SafeAreaView style={WelcomeBannerStyle.container}>
       <ScrollView>
-      <View style={styles.container}>
-        <Text style={styles.largeText} >Upcoming Guinea Pig Events:</Text>
+      <Image style={WelcomeBannerStyle.image} source={require('../../assets/cropped-SCClogo-1.png')}/>
+      <View>
+      <View style={ButtonStyles.button}>
+        <Text style={ButtonStyles.buttonTextLarge} >Upcoming Guinnea Pig Events:</Text>
+        </View>
         <ScrollView>
           {loading ? (
-            <Text style={styles.normalText}>loading...</Text>
+            <View style={ButtonStyles.button}>
+            <Text style={ButtonStyles.buttonText}>loading...</Text>
+            </View>
             ):
             <></>}
         {renderEvent()}
         </ScrollView>
-        {(pet != 'Rats') ? <Button title="Rats" onPress={()=>combinedFunction('Rats')}/> : <></>}
-        {(pet != 'Guinea pigs') ? <Button title="Guinea Pigs" onPress={()=>combinedFunction('Guinea pigs')}/> : <></> }
-        {(pet != 'Tigers') ? <Button title="Tigers" onPress={()=>combinedFunction('Tigers')}/> : <></>}
-        <Button title="Go to Home" onPress={() => navigation.navigate('Welcome')} />
-        <Button title="Go back" onPress={() => navigation.goBack()} />
+        {(pet != 'Rats') ? <Button color="#869471" title="Rats" onPress={()=>combinedFunction('Rats')}/> : <></>}
+        {(pet != 'Guinea pigs') ? <Button color="#869471" title="Guinea Pigs" onPress={()=>combinedFunction('Guinea pigs')}/> : <></> }
+        {(pet != 'Tigers') ? <Button color="#869471" title="Tigers" onPress={()=>combinedFunction('Tigers')}/> : <></>}
+        <Button   color="#869471" title="Go to Home" onPress={() => navigation.navigate('Welcome')} />
+        <Button  color="#869471" title="Go back" onPress={() => navigation.goBack()} />
       </View>
       </ScrollView>
             </SafeAreaView>
@@ -99,15 +110,17 @@ export function Events ({ navigation }) {
     break;
     case '':
     return (
-      <SafeAreaView style={styles.SafeArea}>
+      <SafeAreaView style={WelcomeBannerStyle.container}>
       <ScrollView>
-      <View style={styles.container}>
-        <Text style={styles.largeText} >Events:</Text>
-        {(pet != 'Rats') ? <Button title="Rats" onPress={()=>combinedFunction('Rats')}/> : <></>}
-        {(pet != 'Guinea pigs') ? <Button title="Guinea Pigs" onPress={()=>combinedFunction('Guinea pigs')}/> : <></> }
-        {(pet != 'Tigers') ? <Button title="Tigers" onPress={()=>combinedFunction('Tigers')}/> : <></>}
-        <Button title="Go to Home" onPress={() => navigation.navigate('Welcome')} />
-        <Button title="Go back" onPress={() => navigation.goBack()} />
+      <View>
+      <View style={ButtonStyles.button}>
+        <Text style={ButtonStyles.buttonTextLarge} >Upcoming Animal Events:</Text>
+        </View>
+        {(pet != 'Rats') ? <Button color="#869471" title="Rats" onPress={()=>combinedFunction('Rats')}/> : <></>}
+        {(pet != 'Guinea pigs') ? <Button color="#869471" title="Guinea Pigs" onPress={()=>combinedFunction('Guinea pigs')}/> : <></> }
+        {(pet != 'Tigers') ? <Button color="#869471" title="Tigers" onPress={()=>combinedFunction('Tigers')}/> : <></>}
+        <Button   color="#869471" title="Go to Home" onPress={() => navigation.navigate('Welcome')} />
+        <Button  color="#869471" title="Go back" onPress={() => navigation.goBack()} />
       </View>
       </ScrollView>
             </SafeAreaView>
@@ -115,16 +128,21 @@ export function Events ({ navigation }) {
     break;
     case 'Tigers':
   return (
-    <SafeAreaView style={styles.SafeArea}>
+    <SafeAreaView style={WelcomeBannerStyle.container}>
     <ScrollView>
-    <View style={styles.container}>
-      <Text style={styles.largeText} >Upcoming  Tiger Events:</Text>
-      <Text  >No events, too scary!!</Text>
-      {(pet != 'Rats') ? <Button title="Rats" onPress={()=>setPet('Rats')}/> : <></>}
-      {(pet != 'Guinea pigs') ? <Button title="Guinea Pigs" onPress={()=>setPet('Guinea pigs')}/> : <></> }
-      {(pet != 'Tigers') ? <Button title="Tigers" onPress={()=>setPet('Tigers')}/> : <></>}
-      <Button title="Go to Home" onPress={() => navigation.navigate('Welcome')} />
-      <Button title="Go back" onPress={() => navigation.goBack()} />
+    <Image style={WelcomeBannerStyle.image} source={require('../../assets/roaring-tiger-5044101.jpeg')}/>
+    <View>
+    <View style={ButtonStyles.button}>
+      <Text style={ButtonStyles.buttonTextLarge} >Upcoming Animal Events:</Text>
+      </View>
+      <View style={ButtonStyles.button}>
+        <Text style={ButtonStyles.buttonTextLarge}>No events, too scary!!</Text>
+      </View>
+      {(pet != 'Rats') ? <Button color="#869471" title="Rats" onPress={()=>setPet('Rats')}/> : <></>}
+      {(pet != 'Guinea pigs') ? <Button color="#869471" title="Guinea Pigs" onPress={()=>setPet('Guinea pigs')}/> : <></> }
+      {(pet != 'Tigers') ? <Button color="#869471" title="Tigers" onPress={()=>setPet('Tigers')}/> : <></>}
+      <Button color="#869471" title="Go to Home" onPress={() => navigation.navigate('Welcome')} />
+      <Button color="#869471" title="Go back" onPress={() => navigation.goBack()} />
     </View>
     </ScrollView>
           </SafeAreaView>

@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react'
-import { Text, View, Button, ScrollView, TextInput, SafeAreaView } from 'react-native';
+import { Text, View, Button, ScrollView, TextInput, SafeAreaView, TouchableOpacity} from 'react-native';
 import { styles } from '../styles'
-import {Food} from '../../assets/components/foodComponent';
+import {Food} from '../components/scraperPages/foodComponent';
+import { ButtonStyles } from '../components/WelcomePage/MainButtonsStyle';
 export function FoodSafety({ navigation }) {
 
 
@@ -49,91 +50,110 @@ export function FoodSafety({ navigation }) {
     <SafeAreaView style={styles.SafeArea}>
     <ScrollView>
     <View style={styles.container}>
-      <Text>Rat Food Checker:</Text>
+      <View style={ButtonStyles.button}>
+      <Text style={ButtonStyles.buttonTextLarge}>Rat Food Checker:</Text>
+      </View>
       <TextInput
         style={styles.textBox}
         onChangeText={onChangeText}
         value={text}
         placeholder="eg 'Apple'"
         />
-        <Button
-        title='Search'
-        onPress={Search}>Search</Button>
+         <TouchableOpacity 
+        style={ButtonStyles.button}
+        title="Search"
+        onPress={() => search()}
+      ><Text style={ButtonStyles.buttonText}>Search</Text>
+        </TouchableOpacity>
       <ScrollView>
         {loading ? (
-          <Text>loading...</Text>
+          <View style={ButtonStyles.button}>
+          <Text style={ButtonStyles.buttonText}>loading...</Text>
+          </View>
           ):
           <></>}
       {renderFood()}
       </ScrollView>
-      {(pet != 'Rats') ? <Button title="Rats" onPress={()=>setPet('Rats')}/> : <></>}
-      {(pet != 'Guinea pigs') ? <Button title="Guinea Pigs" onPress={()=>setPet('Guinea pigs')}/> : <></> }
-      {(pet != 'Tigers') ? <Button title="Tigers" onPress={()=>setPet('Tigers')}/> : <></>}
-      <Button title="Go to Home" onPress={() => navigation.navigate('Welcome')} />
-      <Button title="Go back" onPress={() => navigation.goBack()} />
+      {(pet != 'Rats') ? <Button color="#869471" title="Rats" onPress={()=>setPet('Rats')}/> : <></>}
+      {(pet != 'Guinea pigs') ? <Button color="#869471" title="Guinea Pigs" onPress={()=>setPet('Guinea pigs')}/> : <></> }
+      {(pet != 'Tigers') ? <Button color="#869471" title="Tigers" onPress={()=>setPet('Tigers')}/> : <></>}
+      <Button   color="#869471" title="Go to Home" onPress={() => navigation.navigate('Welcome')} />
+      <Button  color="#869471" title="Go back" onPress={() => navigation.goBack()} />
     </View>
     </ScrollView>
           </SafeAreaView>
   );
   break;
   case 'Guinea pigs':
-  return (
-    <SafeAreaView style={styles.SafeArea}>
-    <ScrollView>
-    <View style={styles.container}>
-      <Text>Guinea Pig Food Checker:</Text>
-      <TextInput
-        style={styles.textBox}
-        onChangeText={onChangeText}
-        value={text}
-        placeholder="eg 'Apple'"
-        />
-        <Button
-        title='Search'
-        onPress={guineaSearch}>Search</Button>
+    return (
+      <SafeAreaView style={styles.SafeArea}>
       <ScrollView>
-        {loading ? (
-          <Text>loading...</Text>
-          ):
-          <></>}
-      {renderFood()}
+      <View style={styles.container}>
+        <View style={ButtonStyles.button}>
+        <Text style={ButtonStyles.buttonTextLarge}>Guinea Pig Food Checker:</Text>
+        </View>
+        <TextInput
+          style={styles.textBox}
+          onChangeText={onChangeText}
+          value={text}
+          placeholder="eg 'Apple'"
+          />
+           <TouchableOpacity 
+          style={ButtonStyles.button}
+          title="Search"
+          onPress={() => guineaSearch()}
+        ><Text style={ButtonStyles.buttonText}>Search</Text>
+          </TouchableOpacity>
+        <ScrollView>
+          {loading ? (
+            <View style={ButtonStyles.button}>
+            <Text style={ButtonStyles.buttonText}>loading...</Text>
+            </View>
+            ):
+            <></>}
+        {renderFood()}
+        </ScrollView>
+        {(pet != 'Rats') ? <Button color="#869471" title="Rats" onPress={()=>setPet('Rats')}/> : <></>}
+        {(pet != 'Guinea pigs') ? <Button color="#869471" title="Guinea Pigs" onPress={()=>setPet('Guinea pigs')}/> : <></> }
+        {(pet != 'Tigers') ? <Button color="#869471" title="Tigers" onPress={()=>setPet('Tigers')}/> : <></>}
+        <Button   color="#869471" title="Go to Home" onPress={() => navigation.navigate('Welcome')} />
+        <Button  color="#869471" title="Go back" onPress={() => navigation.goBack()} />
+      </View>
       </ScrollView>
-      {(pet != 'Rats') ? <Button title="Rats" onPress={()=>setPet('Rats')}/> : <></>}
-      {(pet != 'Guinea pigs') ? <Button title="Guinea Pigs" onPress={()=>setPet('Guinea pigs')}/> : <></> }
-      {(pet != 'Tigers') ? <Button title="Tigers" onPress={()=>setPet('Tigers')}/> : <></>}
-      <Button title="Go to Home" onPress={() => navigation.navigate('Welcome')} />
-      <Button title="Go back" onPress={() => navigation.goBack()} />
-    </View>
-    </ScrollView>
-          </SafeAreaView>
-  );
-  break;
+            </SafeAreaView>
+    );
+    break;
   case 'Tigers':
   return (
     <SafeAreaView style={styles.SafeArea}>
     <ScrollView>
     <View style={styles.container}>
-      <Text>Tiger Food Checker:</Text>
+      <View style={ButtonStyles.button}>
+      <Text style={ButtonStyles.buttonTextLarge}>Tiger Food Checker:</Text>
+      </View>
       <TextInput
         style={styles.textBox}
         onChangeText={onChangeText}
         value={text}
         placeholder="eg 'Apple'"
         />
-        <Button
-        title='Search'
-        >Search</Button>
+        <TouchableOpacity 
+       style={ButtonStyles.button}
+       title="Search"
+       onPress={() => guineaSearch()}
+     ><Text style={ButtonStyles.buttonText}>Search</Text>
+       </TouchableOpacity>
      <SafeAreaView>
-    <View style={styles.eventContainer}>
-      <Text>Tigers can eat any meat</Text>
+    <View style={ButtonStyles.button}>
+      <Text style={ButtonStyles.buttonTextLarge}>Tigers can eat any meat</Text>
     </View>
     <Text></Text>
     </SafeAreaView>
-      {(pet != 'Rats') ? <Button title="Rats" onPress={()=>setPet('Rats')}/> : <></>}
-      {(pet != 'Guinea pigs') ? <Button title="Guinea Pigs" onPress={()=>setPet('Guinea pigs')}/> : <></> }
-      {(pet != 'Tigers') ? <Button title="Tigers" onPress={()=>setPet('Tigers')}/> : <></>}
-      <Button title="Go to Home" onPress={() => navigation.navigate('Welcome')} />
-      <Button title="Go back" onPress={() => navigation.goBack()} />
+      {(pet != 'Rats') ? <Button color="#869471" title="Rats" onPress={()=>setPet('Rats')}/> : <></>}
+      {(pet != 'Guinea pigs') ? <Button color="#869471" title="Guinea Pigs" onPress={()=>setPet('Guinea pigs')}/> : <></> }
+      {(pet != 'Tigers') ? <Button color="#869471" title="Tigers" onPress={()=>setPet('Tigers')}/> : <></>}
+      <Button   color="#869471" title="Go to Home" onPress={() => navigation.navigate('Welcome')} />
+      <Button  color="#869471" title="Go back" onPress={() => navigation.goBack()} />
     </View>
     </ScrollView>
           </SafeAreaView>

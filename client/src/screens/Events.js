@@ -23,19 +23,21 @@ export function Events ({ navigation }) {
   }
 
   return (
+    <SafeAreaView style={styles.SafeArea}>
     <ScrollView>
     <View style={styles.container}>
-      <Text>Upcoming Events:</Text>
+      <Text style={styles.largeText} >Upcoming Events:</Text>
       <ScrollView>
         {loading ? (
-          <Text>loading...</Text>
-      ):
-      <></>}
+          <Text style={styles.normalText}>loading...</Text>
+          ):
+          <></>}
       {renderEvent()}
       </ScrollView>
       <Button title="Go to Home" onPress={() => navigation.navigate('Welcome')} />
       <Button title="Go back" onPress={() => navigation.goBack()} />
     </View>
     </ScrollView>
+          </SafeAreaView>
   )
 }

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html style="background-color: #f4fbf4">
+  <head>
+    <title></title>
+    <meta charset="utf-8" />
+    <pre id="arrPrint"></pre>
+    <script>
+      let names = [];
+      fetch(
+        "https://dev.virtualearth.net/REST/v1/LocalSearch/?query=vets&userLocation=47.60265732,-122.33396912&key=Aqldnwj5FAF0Q1iTK2e8ua4aTj92NXWXN8LlkB30XMVeZ82zvknfcDR41QQxmIw5"
+      )
+        .then((x) => x.json())
+        .then((y) => {
+          var map = new Microsoft.Maps.Map("#myMap", {
+            credentials:
+              "Aqldnwj5FAF0Q1iTK2e8ua4aTj92NXWXN8LlkB30XMVeZ82zvknfcDR41QQxmIw5",
+            center: new Microsoft.Maps.Location(47.602038, -122.333964),
+          });
+          for (let i = 0; i < 15; i++) {
+            //let names = [];
+            const lon = JSON.stringify(
+              y.resourceSets[0].resources[i].point.coordinates[1],
+              null,
+              2
+            );
+            const lat = JSON.stringify(
+              y.resourceSets[0].resources[i].point.coordinates[0],
+              null,
+              2
+            );
+            const name = JSON.stringify(
+              y.resourceSets[0].resources[i].name,
+              null,
+              2
+            );
+            const address = JSON.stringify(
+              y.resourceSets[0].resources[i].addressLine,
+              null,
+              2
+            );
+            names.push(name, lon, lat, address);
+            console.log(name, lon, lat, address);
+            console.log(names);
+            //document.getElementById("arrPrint").innerHTML = names;
+
+            //var center = map.getCenter();
+            //Create custom Pushpin
+
+            var pin = new Microsoft.Maps.Pushpin(
+              new Microsoft.Maps.Location(lat, lon),
+              {
+                title: name,
+                subTitle: address,
+                text: "1",
+              }
+            );
+            map.entities.push(pin);
+            //document.getElementById("arrPrint").innerHTML = names;
+          }
+        });
+
+      console.log(i);
+
+      console.log(names);
+    </script>
+    <script
+      type="text/javascript"
+      src="http://www.bing.com/api/maps/mapcontrol?callback=GetMap"
+      async
+      defer
+    ></script>
+  </head>
+  <body>
+    <div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
+      <img
+        src="../../assets/ratifyLogoTransparent.png"
+        alt="LA"
+        style="width: 15%"
+      />
+      <div class="w3-display-middle">
+        <div
+          class="full border"
+          id="myMap"
+          style="
+            position: relative;
+            width: 95%;
+            height: 800px;
+            border-color: #89a588;
+            font-size: 1.6rem;
+            display: grid;
+            place-items: center;
+            background: var(--color-background);
+            padding: calc(4 * var(--size-bezel));
+            margin-top: 40px;
+            border-radius: var(--size-radius);
+            border: 3px solid var(--color-shadow, currentColor);
+            box-shadow: 0.5rem 0.5rem 0 var(--color-shadow, currentColor);
+          "
+        ></div>
+        <div
+          class="card"
+          style="
+            width: 95%;
+            background: var(--color-background);
+            padding: calc(4 * var(--size-bezel));
+            margin-top: 40px;
+            border-radius: var(--size-radius);
+            border: 3px solid var(--color-shadow, currentColor);
+            box-shadow: 0.5rem 0.5rem 0 var(--color-shadow, currentColor);
+          "
+        >
+          <h2>The map shows you available vets in local area</h2>
+
+          <div class="button-group"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

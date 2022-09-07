@@ -8,7 +8,7 @@
     "icon": "./assets/ratifyLogo.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/ratifyLogo.png",
+      "image": "./assets/ratifyLogoTransparent.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },

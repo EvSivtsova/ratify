@@ -30,7 +30,7 @@ export function FoodSafety({ navigation }) {
     }
   
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.SafeArea}>
     <ScrollView>
     <View style={styles.container}>
       <Text>Food:</Text>

@@ -7,7 +7,7 @@ export function Animal({ navigation }) {
 
   const [pet, setPet] = useState('');
   const [animals, setAnimals] = useState([]);
-  const chosenAnimal = 'Rats'
+  const chosenAnimal = 'Rats';
   
   const localIP = process.env.SERVER_ADDRESS || '10.64.0.232'
 

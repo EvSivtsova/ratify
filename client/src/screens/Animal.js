@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Text, View, Button, ListItem, SafeAreaView, ScrollView } from "react-native";
+import { Text, View, Button, ListItem, SafeAreaView, ScrollView, TouchableOpacity } from "react-native";
 import { styles } from "../styles";
 import {AnimalDetails} from "../components/animalDetails"
+import { ButtonStyles } from '../components/WelcomePage/MainButtonsStyle';
 
 export function Animal({ navigation }) {
 
@@ -29,9 +30,9 @@ React.useEffect(() => {
     <View style={styles.container}>
     <SafeAreaView>
       {renderDetails()}
-      {(pet != 'Rats') ? <Button title="Rats" onPress={()=>setPet('Rats')}/> : <></>}
-      {(pet != 'Guinea pigs') ? <Button title="Guinea Pigs" onPress={()=>setPet('Guinea pigs')}/> : <></> }
-      {(pet != 'Tigers') ? <Button title="Tigers" onPress={()=>setPet('Tigers')}/> : <></>}
+      {(pet != 'Rats') ? <TouchableOpacity style={ButtonStyles.button} onPress={()=>setPet('Rats')}><Text style={ButtonStyles.buttonText}>Rats</Text></TouchableOpacity> : <></>}
+      {(pet != 'Guinea pigs') ? <TouchableOpacity style={ButtonStyles.button} onPress={()=>setPet('Guinea pigs')}><Text style={ButtonStyles.buttonText}>Guinea Pigs</Text></TouchableOpacity> : <></> }
+      {(pet != 'Tigers') ? <TouchableOpacity style={ButtonStyles.button} onPress={()=>setPet('Tigers')}><Text style={ButtonStyles.buttonText}>Tigers</Text></TouchableOpacity> : <></>}
       <Text>My profile</Text>
       <Button
         title="Go to Food Safety"

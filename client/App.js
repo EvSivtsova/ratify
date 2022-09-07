@@ -8,8 +8,8 @@ import { Animal } from "./src/screens/Animal";
 import { FoodSafety } from "./src/screens/FoodSafety";
 import { Vets } from "./src/screens/Vets";
 import { Events } from "./src/screens/Events";
-import { LoadMap1 } from "./src/screens/Map1";
-import { LoadMap2 } from "./src/screens/Map2";
+import { LoadMap1 } from "./src/screens/VetsMap";
+import { LoadMap2 } from "./src/screens/ShopsMap";
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -24,8 +24,8 @@ export default function App() {
         <Stack.Screen name="FoodSafety" component={FoodSafety} />
         <Stack.Screen name="Vets" component={Vets} />
         <Stack.Screen name="Events" component={Events} />
-        <Stack.Screen name="Map1" component={LoadMap1} />
-        <Stack.Screen name="Map2" component={LoadMap2} />
+        <Stack.Screen name="VetsMap" component={LoadMap1} />
+        <Stack.Screen name="ShopsMap" component={LoadMap2} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -49,45 +49,11 @@ const sessionChecker = (req, res, next) => {
   }
 };
 
-app.post("/login", (req, res) => {
-  let username = req.body.username;
-  let password = req.body.password;
 
-  console.log("username: ", username);
-  console.log("password: ", password);
+// route setup
 
-  let MongoClient = require('mongodb').MongoClient
-  // refactor the server ip
-  MongoClient.connect("mongodb://0.0.0.0/ratify", function(err, client) {
-    if (err) {
-      console.log("mongodb error: ", error);
-    }
-
-    console.log(client);
-    console.log(client.db);
-    let collection = client.db("ratify").collection('users');
-    collection.findOne({"email": username, "password": password}, function(err, item) {
-      // if OK, user exists, if KO user does not exist
-      console.log(err);
-      console.log(item);
-      if (item == null) {
-        res.send(500);
-      }
-      else {
-        res.send(200);
-      }
-    });
-  });
-
-  // if ((username == "delly@email.com") && (password == "123456")) {
-  //   res.send("OK");
-  // }
-  // else {
-  //   res.status(500)
-  //   res.send('KO')
-  // }
-})
-
+app.use("/users", usersRouter);
+app.use("/users", usersRouter);
 
 app.get('/events',  (req,res) =>{
   //how to clear between calls
@@ -99,18 +65,10 @@ app.get('/events',  (req,res) =>{
 app.get('/foodSafety', (req,res) => {
   let value = req.query.text
   value = value.charAt(0).toUpperCase() + value.slice(1);
-    scraper.ratFoodScraper(value).then(()=> {
-      res.json(scraper.matchedFoods)
-    })
+  scraper.ratFoodScraper(value).then(()=> {
+    res.json(scraper.matchedFoods)
+  })
 })
-// route setup
-
-app.use("/users", usersRouter);
-
-// app.get('*', (req, res) => {
-//   res.sendFile(path.join(__dirname, '..', 'client/src/screens/SignUp.js'));
-//   // res.sendFile(path.join(__dirname, "..", "..", "client/app.js"));
-// });
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

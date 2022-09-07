@@ -77,8 +77,8 @@ class ScraperApi {
 }
 
 
-const scraper = new ScraperApi()
-scraper.guineaScraper('A').then(()=>{
-  console.log(scraper.matchedFoods)
-})
+// const scraper = new ScraperApi()
+// scraper.guineaScraper('A').then(()=>{
+//   console.log(scraper.matchedFoods)
+// })
 module.exports = ScraperApi;

@@ -3,7 +3,9 @@ const Animal = require("../models/animal");
 const AnimalsController = {
   Find: async (req, res) => {
       try {
-      const animals = await Animal.find();
+        let animal = query.chosen;
+        console.log('animal is',animal)
+      const animals = await Animal.find({animal: `${animal}`});
       res.json(animals);
       console.log("response sent");
       } catch (err) {

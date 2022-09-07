@@ -5,9 +5,9 @@ import {AnimalDetails} from "../animalDetails"
 
 export function Animal({ navigation }) {
 
-  const [pet, setPet] = useState();
+  const [pet, setPet] = useState('');
   const [animals, setAnimals] = useState([]);
-  let animalToDisplay;
+  const chosenAnimal = 'Rats'
   
   const localIP = process.env.SERVER_ADDRESS || '10.64.0.232'
 
@@ -18,7 +18,7 @@ const renderDetails = () => {
 }
 
 React.useEffect(() => {
-  fetch('http://localhost:8000/animals/find').then((response) => response.json())
+  fetch(`http://localhost:8000/animals/find?chosen=${chosenAnimal}`).then((response) => response.json())
     .then((data) => {
       setAnimals(data)
     })

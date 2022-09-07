@@ -50,6 +50,7 @@ class ScraperApi {
   }
 
   guineaEventsResults(eventApiResult){
+    this.eventList = []
     let eventx = eventApiResult.querySelector('h4').nextElementSibling.nextElementSibling
     const removeWhitespaceRegex = /^\s+|\s+$|\s+(?=\s)/g;
     let events = []
@@ -77,6 +78,6 @@ class ScraperApi {
 }
 
 
-const scraper = new ScraperApi()
-scraper.guineaEventsScraper().then(()=>{console.log(scraper.eventList)})
+// const scraper = new ScraperApi()
+// scraper.guineaEventsScraper().then(()=>{console.log(scraper.eventList)})
 module.exports = ScraperApi;

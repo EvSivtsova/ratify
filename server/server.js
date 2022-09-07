@@ -97,10 +97,15 @@ app.post("/login", (req, res) => {
 
 
 app.get('/events',  (req,res) =>{
-  //how to clear between calls
-  scraper.ratEventsScraper().then(()=>{
-    res.json(scraper.eventList)
-  })
+        ratScraper.ratEventsScraper().then(()=>{
+          res.json(ratScraper.eventList)
+        })
+})
+
+app.get('/guineaevents', (req,res)=> {
+    guineaScraper.guineaEventsScraper().then(()=>{
+      res.json(guineaScraper.eventList)
+    })
 })
 
 app.get('/RatfoodSafety', (req,res) => {

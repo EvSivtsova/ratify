@@ -37,7 +37,7 @@ React.useEffect(() => {
         title="Go to Food Safety"
         color="#869471"
         onPress={() => navigation.navigate("FoodSafety")}
-        />
+      />
       <Button title="Go to Vets"  color="#869471"onPress={() => navigation.navigate("Vets")} />
       <Button
         title="View events"
@@ -48,9 +48,9 @@ React.useEffect(() => {
         title="Go to Home"
         color="#869471"
         onPress={() => navigation.navigate("Welcome")}
-        />
+      />
       <Button title="Go back" color="#869471" onPress={() => navigation.goBack()} />
-        </SafeAreaView>
+    </SafeAreaView>
     </View>
     </ScrollView>
   );

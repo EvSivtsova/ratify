@@ -6,26 +6,32 @@ import { Formik, Form, Field } from 'formik';
  
 export function SignUp({ navigation }) {
 
+  const [user, setUser] = useState();
+
   async function onSubmit(values) {
     console.log('submitting')
     const newUser = values;
     console.log(newUser);
-    const localIP = process.env.SERVER_ADDRESS || '10.64.0.232'
-
-    await fetch(`http://${localIP}:8000/users/new`, {
+   
+    await fetch(`http://localhost:8000/users/new`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(newUser),
     })
-    .then(res => res.json())
+    .then((response) => response.json())
+    // .then(data => console.log(data))
+    .then(data => setUser(data))
+    .then(() => {
+      console.log(user.animal)
+      // navigation.navigate('Animal')
+    })  
     .catch(error => {
-      alert(error);
+      console.log(error);
       return;
     })
-    .then(response => console.log('Success:', response))
- }
+  }
  
  return (
    <View style={styles.container}>
@@ -73,6 +79,14 @@ export function SignUp({ navigation }) {
             onChangeText={handleChange('lastName')}
             onBlur={handleBlur('lastName')}
             placeholder="Last Name"
+          />
+
+          <Text>Choose your animals:</Text>     
+          <TextInput
+            value={values.animal}
+            onChangeText={handleChange('animal')}
+            onBlur={handleBlur('animal')}
+            placeholder="Rats, Guinea pigs or Tigers"
           />
 
         <Button onPress={handleSubmit} title="Submit" />

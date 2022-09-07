@@ -1,14 +1,15 @@
 import React from 'react'
-import {View, Text} from 'react-native'
+import {View, Text, SafeAreaView} from 'react-native'
 import { styles } from '../../styles';
+import { ButtonStyles } from '../WelcomePage/MainButtonsStyle';
 
 export  function Event({data}){
   return (
-    <View>
-      <View style={styles.eventContainer}>
-        <Text style={{fontSize: 16}}>{data.event}</Text>
+    <SafeAreaView>
+      <View style={ButtonStyles.button}>
+        <Text style={ButtonStyles.buttonText}>{data.event}</Text>
       </View>
     <Text></Text>
-    </View>
+    </SafeAreaView>
   );
 }

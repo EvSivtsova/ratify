@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react'
-import { Text, View, Button, ScrollView, TextInput, SafeAreaView } from 'react-native';
+import { Text, View, Button, ScrollView, TextInput, SafeAreaView, TouchableOpacity} from 'react-native';
 import { styles } from '../styles'
 import {Food} from '../components/scraperPages/foodComponent';
+import { ButtonStyles } from '../components/WelcomePage/MainButtonsStyle';
 export function FoodSafety({ navigation }) {
 
 
@@ -33,7 +34,9 @@ export function FoodSafety({ navigation }) {
     <SafeAreaView style={styles.SafeArea}>
     <ScrollView>
     <View style={styles.container}>
-      <Text>Food:</Text>
+      <View style={ButtonStyles.button}>
+      <Text style={ButtonStyles.buttonText}>Food:</Text>
+      </View>
       <TextInput
         style={styles.textBox}
         onChangeText={onChangeText}
@@ -41,18 +44,23 @@ export function FoodSafety({ navigation }) {
         placeholder="eg 'Apple'"
         
         />
-        <Button
-        title='Search'
-        onPress={search}>Search</Button>
+         <TouchableOpacity 
+        style={ButtonStyles.button}
+        title="Search"
+        onPress={() => search()}
+      ><Text style={ButtonStyles.buttonText}>Search</Text>
+        </TouchableOpacity>
       <ScrollView>
         {loading ? (
-          <Text>loading...</Text>
+          <View style={ButtonStyles.button}>
+          <Text style={ButtonStyles.buttonText}>loading...</Text>
+          </View>
           ):
           <></>}
       {renderFood()}
       </ScrollView>
-      <Button title="Go to Home" onPress={() => navigation.navigate('Welcome')} />
-      <Button title="Go back" onPress={() => navigation.goBack()} />
+      <Button   color="#869471" title="Go to Home" onPress={() => navigation.navigate('Welcome')} />
+      <Button  color="#869471" title="Go back" onPress={() => navigation.goBack()} />
     </View>
     </ScrollView>
           </SafeAreaView>

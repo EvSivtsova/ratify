@@ -21,7 +21,7 @@ export const WelcomeBannerStyle = StyleSheet.create({
     fontSize: 35,
     letterSpacing: 0.25,
     color: '#89A588',
-    fontFamily: 'notoserif'
+    // fontFamily: 'notoserif'
   },
   image: {
     // aspectRatio: 1.5,

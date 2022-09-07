@@ -10,7 +10,7 @@ export const LoginStyle = StyleSheet.create({
     textAlign: "center",
     fontSize: 15,
     letterSpacing: 0.25,
-    fontFamily: "notoserif",
+    // fontFamily: "notoserif",
   },
   LogInButton: {
     alignItems: "center",

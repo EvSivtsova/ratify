@@ -1,23 +1,30 @@
-import React from 'react';
+import { useState } from 'react';
 import { Alert, Text, TouchableOpacity, TextInput, View } from 'react-native';
 import { WelcomeBanner } from '../components/WelcomePage/WelcomeBanner/WelcomeBanner';
 import { LoginStyle } from '../components/LogInPage/LoginStyle';
 import { styles } from '../styles';
 
 export function LogIn({ navigation }) {
-  const [username, setUsername] = React.useState('');
-  const [password, setPassword] = React.useState('');
-
-//  const AuthContext = React.createContext();
-//  const { signIn } = React.useContext(AuthContext);
-
-  const signIn  = (username, password) => {
-    console.log(JSON.stringify({"username": username, "password": password}))
-    // refactor the server ip / name
-    fetch("http://192.168.1.11:8000/login", {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+  
+  //  const AuthContext = React.createContext();
+  //  const { signIn } = React.useContext(AuthContext);
+  
+  const signIn  = (email, password) => {
+    setLoading(true);
+    if (!email || !password) {
+      alert('Please enter your email and password')
+      setLoading(false);
+      return;
+    }
+    console.log(JSON.stringify({"email": email, "password": password}))
+    
+    fetch("http://localhost:8000/users/login", {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({"username": username, "password": password})
+      body: JSON.stringify({"email": email, "password": password})
     })
     .then((response) => response)
     .then((data) => {console.log(data); Alert.alert(`Success ${data}`)})
@@ -30,8 +37,8 @@ export function LogIn({ navigation }) {
       <TextInput
         style={LoginStyle.inputStyle}
         placeholder="Email Address"
-        value={username}
-        onChangeText={setUsername}
+        value={email}
+        onChangeText={setEmail}
       />
       <TextInput
         style={LoginStyle.inputStyle}
@@ -40,11 +47,11 @@ export function LogIn({ navigation }) {
         onChangeText={setPassword}
         secureTextEntry
       />
-      {/* <Button title="Sign in" onPress={() => signIn({ username, password })} /> */}
+      {/* <Button title="Sign in" onPress={() => signIn({ email, password })} /> */}
       <TouchableOpacity
         style={LoginStyle.LogInButton}
         title="Log In"
-        onPress={() => signIn(username, password)}
+        onPress={() => signIn(email, password)}
       >
         <Text style={LoginStyle.buttonText}>Log In</Text>
       </TouchableOpacity>

@@ -5,7 +5,6 @@ const UsersController = {
     console.log("I'm in user controler in create mrthod")
     if (User.findOne({ email: req.body.email } === null)) {
       const user = await new User(req.body);
-      console.log(user);
       await user.save((err) => {
         if (err) {
           res.send(err);
@@ -17,42 +16,14 @@ const UsersController = {
     }
   },
   Login: (req, res) => {
-    let username = req.body.username;
-    let password = req.body.password;
-  
-    console.log("username: ", username);
-    console.log("password: ", password);
-  
-    let MongoClient = require('mongodb').MongoClient
-    // refactor the server ip
-    MongoClient.connect("mongodb://0.0.0.0/ratify", function(err, client) {
-      if (err) {
-        console.log("mongodb error: ", error);
+    User.findOne({"email": req.body.email, "password": req.body.password}, function(err, item) {
+      if (item == null) {
+        res.send(500);
       }
-  
-      console.log(client);
-      console.log(client.db);
-      let collection = client.db("ratify").collection('users');
-      collection.findOne({"email": username, "password": password}, function(err, item) {
-        // if OK, user exists, if KO user does not exist
-        console.log(err);
-        console.log(item);
-        if (item == null) {
-          res.send(500);
-        }
-        else {
-          res.send(200);
-        }
-      });
+      else {
+        res.send(200);
+      }
     });
-  
-    // if ((username == "delly@email.com") && (password == "123456")) {
-    //   res.send("OK");
-    // }
-    // else {
-    //   res.status(500)
-    //   res.send('KO')
-    // }
   }
 };
 

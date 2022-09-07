@@ -1,6 +1,6 @@
 import React from 'react'
 import {View, Text, SafeAreaView} from 'react-native'
-import { styles } from '../../src/styles';
+import { styles } from '../../styles';
 
 export  function Food({data}){
   return (

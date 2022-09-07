@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import { Text, View, Button, ScrollView, TextInput, SafeAreaView } from 'react-native';
 import { styles } from '../styles'
-import {Food} from '../../assets/components/foodComponent';
+import {Food} from '../components/scraperPages/foodComponent';
 export function FoodSafety({ navigation }) {
 
 

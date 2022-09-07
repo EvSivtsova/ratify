@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Text, View, Button, SafeAreaView, ScrollView } from 'react-native'
 import { styles } from '../styles'
-import {Event} from '../../assets/components/eventComponent'
+import {Event} from '../components/scraperPages/eventComponent'
 export function Events ({ navigation }) {
 
   const [loading, setLoading]= useState([])

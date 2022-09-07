@@ -21,11 +21,9 @@ export function SignUp({ navigation }) {
       body: JSON.stringify(newUser),
     })
     .then((response) => response.json())
-    // .then(data => console.log(data))
     .then(data => setUser(data))
     .then(() => {
-      console.log(user.animal)
-      // navigation.navigate('Animal')
+      navigation.navigate('Animal')
     })  
     .catch(error => {
       console.log(error);

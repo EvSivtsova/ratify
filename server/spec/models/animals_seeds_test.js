@@ -1,14 +1,13 @@
-const Animal = require('./animal');
+const Animal = require('../../models/animal');
 const mongoose = require('mongoose');
 require('dotenv').config({ path: './config.env' });
 
 // const Db = process.env.ATLAS_URI || 'mongodb://0.0.0.0/ratify';
 // const Db = process.env.ATLAS_URI;
-const Db = 'mongodb://0.0.0.0/ratify';
+const Db = 'mongodb://0.0.0.0/ratify_test';
 
-console.log(Db);
-
-mongoose
+const seeding = () => { 
+  mongoose
   .connect(Db, {
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -19,12 +18,10 @@ mongoose
   .then(() => 
     seedDB()
   )
-  .then(() => {
-    mongoose.connection.close();
-  })
   .catch((err) => {
     console.log(err);
   });
+}
 
 const animalSeeds = [
     {
@@ -53,9 +50,10 @@ const animalSeeds = [
 
 const seedDB = async () => {
   const res = await Animal.deleteMany({});
-  console.log("seeds deleted")
   const res2 = await Animal.insertMany(animalSeeds);
-  console.log("seeds saved")
+  // const allAnimals = await Animal.Animal.find({ 'animal': { $exists : true } })
+  // console.log(allAnimals)
 };
 
 module.exports = animalSeeds;
+module.exports = seeding;

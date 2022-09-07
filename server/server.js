@@ -11,6 +11,7 @@ const scraper = new ScraperApi()
 
 //add routes
 const usersRouter = require("./routes/users");
+const animalsRouter = require("./routes/animals");
 const app = express();
 
 app.use(logger('dev'));
@@ -49,6 +50,10 @@ const sessionChecker = (req, res, next) => {
   }
 };
 
+app.get('/test',  (req,res) =>{
+  res.json('congrats')
+})
+
 app.get('/events',  (req,res) =>{
   //how to clear between calls
   scraper.ratEventsScraper().then(()=>{
@@ -66,11 +71,7 @@ app.get('/foodSafety', (req,res) => {
 // route setup
 
 app.use("/users", usersRouter);
-
-// app.get('*', (req, res) => {
-//   res.sendFile(path.join(__dirname, '..', 'client/src/screens/SignUp.js'));
-//   // res.sendFile(path.join(__dirname, "..", "..", "client/app.js"));
-// });
+app.use("/animals", animalsRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

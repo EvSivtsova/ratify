@@ -2,7 +2,7 @@
 
 
 # Ratify 🐀🐀
-![Ratify logo](https://imgur.com/o2l8trs.png)
+![Ratify logo](https://imgur.com/o2l8trs.png = 250x250)
 Welcome to the Ratify!
 
 The exotic pet owner's companion app- not just for rats!

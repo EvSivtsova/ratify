@@ -12,14 +12,16 @@ export function LogIn({ navigation }) {
 //  const { signIn } = React.useContext(AuthContext);
 
   const signIn  = (username, password) => {
-    console.log(JSON.stringify({"username": username, "password": password}))
-    // refactor the server ip / name
-    fetch("http://192.168.1.11:8000/login", {
+    // console.log(JSON.stringify({"username": username, "password": password}))
+    
+    const localIP = process.env.SERVER_ADDRESS || '192.168.1.11'
+    
+    fetch(`http://192.168.1.11:8000/users/login`, {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({"username": username, "password": password})
     })
-    .then((response) => response)
+    .then((response) => response.json())
     .then((data) => {console.log(data); Alert.alert(`Success ${data}`)})
     .catch((error) => {Alert.alert(`Error ${error}`)});
   }

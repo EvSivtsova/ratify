@@ -9,7 +9,6 @@ const debug = require('debug')('ratify:server');
 const http = require('http');
 require('dotenv').config({ path: './config.env' });
 const mongoose = require('mongoose');
-const Db = process.env.ATLAS_URI;
 
 /**
 * Get port from environment and store in Express.
@@ -17,14 +16,12 @@ const Db = process.env.ATLAS_URI;
 
 const port = normalizePort(process.env.PORT || 8000);
 app.set('port', port);
-
 /**
 * Connect to MongoDB
 **/
 
-// const mongoDbUrl = Db || 'mongodb://0.0.0.0/ratify';
-const mongoDbUrl = 'mongodb://0.0.0.0/ratify';
-mongoose.connect(mongoDbUrl, {
+var MONGODB_URI = process.env.ATLAS_URI;
+mongoose.connect(MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })

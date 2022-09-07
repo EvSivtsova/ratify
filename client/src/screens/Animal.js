@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Text, View, Button, ListItem, SafeAreaView, ScrollView } from "react-native";
 import { styles } from "../styles";
-import {AnimalDetails} from "../animalDetails"
+import {AnimalDetails} from "../components/animalDetails"
 
 export function Animal({ navigation }) {
 

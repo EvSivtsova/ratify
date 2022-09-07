@@ -7,7 +7,9 @@ const logger = require('morgan');
 const session = require('cookie-session');
 const methodOverride = require('method-override');
 const ScraperApi = require('./controllers/scraperController');
-const scraper = new ScraperApi()
+const ratScraper = new ScraperApi()
+const Guinea = require('./controllers/guineaPigAPIController');
+const guineaScraper = new Guinea()
 
 //add routes
 const usersRouter = require("./routes/users");
@@ -101,11 +103,18 @@ app.get('/events',  (req,res) =>{
   })
 })
 
-app.get('/foodSafety', (req,res) => {
+app.get('/RatfoodSafety', (req,res) => {
   let value = req.query.text
   value = value.charAt(0).toUpperCase() + value.slice(1);
-    scraper.ratFoodScraper(value).then(()=> {
-      res.json(scraper.matchedFoods)
+    ratScraper.ratFoodScraper(value).then(()=> {
+      res.json(ratScraper.matchedFoods)
+    })
+})
+app.get('/GuineafoodSafety', (req,res) => {
+  let value = req.query.text
+  value = value.charAt(0).toUpperCase() + value.slice(1);
+    guineaScraper.guineaScraper(value).then(()=> {
+      res.json(guineaScraper.matchedFoods)
     })
 })
 // route setup

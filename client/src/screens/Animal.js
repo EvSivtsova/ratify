@@ -5,9 +5,9 @@ import {AnimalDetails} from "../animalDetails"
 
 export function Animal({ navigation }) {
 
-  const [pet, setPet] = useState('');
+  const [pet, setPet] = useState('Guinea Pigs');
   const [animals, setAnimals] = useState([]);
-  const chosenAnimal = 'Rats';
+  let chosenAnimal = 'Rats';
   
   const localIP = process.env.SERVER_ADDRESS || '10.64.0.232'
 
@@ -25,12 +25,10 @@ React.useEffect(() => {
     .catch((error) => console.log(error))
 }, [])
 
-
   return (
     <ScrollView>
     <View style={styles.container}>
     <SafeAreaView>
-
       {renderDetails()}
       <Button title="Go back" onPress={() => navigation.goBack()} />
     </SafeAreaView>

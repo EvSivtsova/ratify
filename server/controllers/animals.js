@@ -4,7 +4,6 @@ const AnimalsController = {
   Find: async (req, res) => {
       try {
         let animal = req.query.chosen;
-        // console.log('animal is',animal)
       const animals = await Animal.find({animal: `${animal}`})
       res.json(animals);
       console.log("response sent");

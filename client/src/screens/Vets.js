@@ -1,5 +1,5 @@
 import { List } from "react-native-paper";
-import { Button } from "react-native";
+import { Button, Text } from "react-native";
 import React, { useState } from "react";
 
 export function Vets({ navigation }) {
@@ -10,19 +10,43 @@ export function Vets({ navigation }) {
   return (
     <List.Section title="Accordions">
       <List.Accordion
-        title="List of Vets"
+        title="Vets"
         left={(props) => <List.Icon {...props} icon="folder" />}
       >
-        <List.Item title="Local Vets" />
-        <Button title="Location" onPress={() => navigation.navigate("Map1")} />
+        <Text
+          style="text-indent: 50px;
+  text-align: justify;
+  letter-spacing: 3px;"
+        >
+          Find an exotic pet vet near you that. There are vets that treat a
+          large variety of exotics pets including small mammals, birds,
+          reptiles, invertebrate, amphibians and fish.
+        </Text>
+
+        <Button
+          title="Location"
+          onPress={() => navigation.navigate("VetsMap")}
+        />
       </List.Accordion>
 
       <List.Accordion
-        title="List of Pet Shops"
+        title="Pet Shops"
         left={(props) => <List.Icon {...props} icon="folder" />}
       >
-        <List.Item title="Local Pet Stores" />
-        <Button title="Location" onPress={() => navigation.navigate("Map2")} />
+        <Text
+          style="text-indent: 50px;
+  text-align: justify;
+  letter-spacing: 3px;"
+        >
+          Find an exotic pet shop near you that. There are shopss that sellitems
+          for a large variety of exotics pets including small mammals, birds,
+          reptiles, invertebrate, amphibians and fish.
+        </Text>
+
+        <Button
+          title="Location"
+          onPress={() => navigation.navigate("ShopsMap")}
+        />
       </List.Accordion>
     </List.Section>
   );

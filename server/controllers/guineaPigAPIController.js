@@ -38,37 +38,37 @@ class ScraperApi {
   }
 
   
-  async ratEventsScraper(){
+  async guineaEventsScraper(){
     try{
       const scraperapiClient = require('scraperapi-sdk')(process.env.KEY)
-      let eventApiResult = await scraperapiClient.get('https://www.nfrs.org/shows/next/')
+      let eventApiResult = await scraperapiClient.get('https://southerncavyclub.co.uk/show-dates/')
       eventApiResult = this.parseHTML(eventApiResult)
-      this.ratEventsResults(eventApiResult)
+      this.guineaEventsResults(eventApiResult)
     } catch (err) {
       console.log(err);
     }
   }
 
-  ratEventsResults(eventApiResult){
-    let totalShows = this.showCalculator(eventApiResult)
-    const removeWhitespaceRegex = /^(?=\n)$|^\s*|\s*$|\n\n+/gm;
-    eventApiResult = eventApiResult.querySelector('p').nextElementSibling;
-    let event = (eventApiResult.textContent.replace(removeWhitespaceRegex, ""));
-    this.eventList = [];
-    this.eventList.push({event})
-    for (let i = 0; i < 6; i++){
-      eventApiResult = eventApiResult.nextElementSibling;
-      event = (eventApiResult.textContent.replace(removeWhitespaceRegex, ""));
-      this.eventList.push({event})}
-    return this.eventList
-  }
-
-  showCalculator(data){
-    let showsNum = data.querySelector('h2').textContent
-    const findIntegerRegex = /\d+/g;
-    showsNum = showsNum.match(findIntegerRegex);
-    showsNum = parseInt(showsNum.join(""));
-    return showsNum;
+  guineaEventsResults(eventApiResult){
+    let eventx = eventApiResult.querySelector('h4').nextElementSibling.nextElementSibling
+    const removeWhitespaceRegex = /^\s+|\s+$|\s+(?=\s)/g;
+    let events = []
+      eventx = eventx.nextElementSibling
+      events.push(eventx.textContent);
+      for (let i = 0; i < 4; i++){
+        eventx = eventx.nextElementSibling
+        events.push(eventx.textContent)
+      }
+      let event = events.join('\n').replace(removeWhitespaceRegex, "")
+      this.eventList.push({event})
+      events = []
+      for (let i = 0; i < 10; i++){
+        eventx = eventx.nextElementSibling
+        events.push(eventx.textContent)
+      }
+       event = events.join('\n').replace(removeWhitespaceRegex, "")
+      this.eventList.push({event})
+      return this.eventList
   }
 
   parseHTML(data){
@@ -77,8 +77,6 @@ class ScraperApi {
 }
 
 
-// const scraper = new ScraperApi()
-// scraper.guineaScraper('A').then(()=>{
-//   console.log(scraper.matchedFoods)
-// })
+const scraper = new ScraperApi()
+scraper.guineaEventsScraper().then(()=>{console.log(scraper.eventList)})
 module.exports = ScraperApi;

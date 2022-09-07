@@ -27,10 +27,10 @@ export const styles = StyleSheet.create({
     backgroundColor: '#F4FBF4',
   },
   normalText:{
-    fontSize: 16, fontFamily: 'Helvetica', fontStyle: 'normal'
+    fontSize: 16
   },
   largeText:{
-    fontSize: 20, fontFamily: 'Helvetica-Bold ', fontStyle: 'normal'
+    fontSize: 20
   },
   navigationButton:{
     

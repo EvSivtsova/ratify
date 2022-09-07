@@ -1,10 +1,10 @@
 const Animal = require('./animal');
 const mongoose = require('mongoose');
-require('dotenv').config({ path: './config.env' });
+require('dotenv').config({ path: '../bin/config.env' });
 
 // const Db = process.env.ATLAS_URI || 'mongodb://0.0.0.0/ratify';
-// const Db = process.env.ATLAS_URI;
-const Db = 'mongodb://0.0.0.0/ratify';
+const Db = process.env.ATLAS_URI;
+// const Db = 'mongodb://0.0.0.0/ratify';
 
 console.log(Db);
 

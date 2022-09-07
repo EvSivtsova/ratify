@@ -8,6 +8,7 @@
     "eslint-plugin-react": "^7.31.6"
   },
   "dependencies": {
+    "formik": "^2.2.9",
     "react-native-paper": "^4.12.4"
   }
 }

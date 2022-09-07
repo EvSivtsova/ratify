@@ -35,7 +35,7 @@ export function FoodSafety({ navigation }) {
     <ScrollView>
     <View style={styles.container}>
       <View style={ButtonStyles.button}>
-      <Text style={ButtonStyles.buttonText}>Food:</Text>
+      <Text style={ButtonStyles.buttonTextLarge}>Food:</Text>
       </View>
       <TextInput
         style={styles.textBox}

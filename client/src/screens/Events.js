@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import { Text, View, Button, SafeAreaView, ScrollView } from 'react-native'
+import { Text, View, Button, SafeAreaView, ScrollView , Image} from 'react-native'
 import { styles } from '../styles'
 import { ButtonStyles } from '../components/WelcomePage/MainButtonsStyle'
 import {Event} from '../components/scraperPages/eventComponent'
+import { WelcomeBannerStyle } from '../components/WelcomePage/WelcomeBanner/WelcomeBannerStyle';
 export function Events ({ navigation }) {
 
   const [loading, setLoading]= useState([])
@@ -24,16 +25,17 @@ export function Events ({ navigation }) {
   }
 
   return (
-    <SafeAreaView style={styles.SafeArea}>
+    <SafeAreaView style={WelcomeBannerStyle.container}>
     <ScrollView>
+    <Image style={WelcomeBannerStyle.image} source={require('../../assets/NFRSlogo.png')}/>
     <View>
     <View style={ButtonStyles.button}>
-      <Text style={ButtonStyles.buttonText} >Upcoming Events:</Text>
+      <Text style={ButtonStyles.buttonTextLarge} >Upcoming Events:</Text>
       </View>
       <ScrollView>
         {loading ? (
           <View style={ButtonStyles.button}>
-          <Text style={styles.normalText}>loading...</Text>
+          <Text style={ButtonStyles.buttonText}>loading...</Text>
           </View>
           ):
           <></>}

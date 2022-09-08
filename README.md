@@ -27,7 +27,10 @@ Ratify is a mobile app created to wllow ease of use for owners of exotic pets to
 
 You will either need the application for Expo on your phone (Android or IOS) from the link below
 ---
-Or you will need to install Xcode on a Mac OS device.
+Or you will need to install Xcode on a Mac OS device. with 
+```
+npm i expo
+```
 ---
 
 Open 2 instances of terminal inside the base directory 'Ratify'.
@@ -45,7 +48,7 @@ npm i
 npm start
 ```
 You should see a similar response
-!!! RESPONSE IMAGE
+![Server image](https://imgur.com/vpkxiEu.png)
 4. In the other terminal, navigate into the 'client' folder with
 ```
 cd client/
@@ -58,9 +61,9 @@ npm i
 ```
 npm start
 ```
-Either scan the QR code in your app or follow instructions to set up mobile simulator.
----screenshot of instructions---
+Either scan the QR code that apears on your phone, or follow instructions to set up mobile simulator on macos.
 
 Alternatively...
 ## Video demonstration link
+https://www.youtube.com/watch?v=FNel0j_WnTU&ab_channel=joeshmo
 

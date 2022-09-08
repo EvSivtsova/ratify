@@ -1,18 +1,15 @@
 import React from 'react'
-import {View, Text} from 'react-native'
+import {View, Text, SafeAreaView} from 'react-native'
+import { styles } from '../../src/styles';
 
 export  function Food({data}){
   return (
-    <View style={{
-      // backgroundColor: '#a9a9a9',
-      width: 320,
-      borderColor: '#dcdcdc',
-      borderWidth: 3,
-      justifyContent: 'center',
-      borderRadius: 5
-    }}>
+    <SafeAreaView>
+    <View style={styles.eventContainer}>
       <Text>{data.foodName}</Text>
       <Text>{data.foodContent}</Text>
     </View>
+    <Text></Text>
+    </SafeAreaView>
   );
 }

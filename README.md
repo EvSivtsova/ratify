@@ -7,7 +7,7 @@ Welcome to the Ratify!
 
 The exotic pet owner's companion app- not just for rats!
 
-Ratify is a mobile app created to wllow ease of use for owners of exotic pets to quickly and easily:
+Ratify is a mobile app created to allow ease of use for owners of exotic pets to quickly and easily:
 
 - View local vets that treat their specific animal
 - Search a comprehensive list of foods to check if they are safe or harmful for their animal
@@ -48,7 +48,17 @@ npm i
 npm start
 ```
 You should see a similar response
-![Server image](https://imgur.com/vpkxiEu.png)
+```
+[nodemon] 2.0.19
+[nodemon] to restart at any time, enter `rs`
+[nodemon] watching path(s): *.*
+[nodemon] watching extensions: js,mjs,json
+[nodemon] starting `node ./bin/www.js`
+I'm in users router
+I'm in animals router
+Now listening on port 8000
+Successfully connected to MongoDB Atlas!
+```
 4. In the other terminal, navigate into the 'client' folder with
 ```
 cd client/

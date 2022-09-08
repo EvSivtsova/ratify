@@ -30,7 +30,10 @@ export function LogIn({ navigation }) {
     })
     .then((response) => response)
     // .then((data) => {console.log(data); Alert.alert(`Success ${data}`)})
-    .then((data) => AsyncStorage.setItem('@auth', JSON.stringify(data)))
+    .then((data) => {
+      AsyncStorage.setItem('@auth', JSON.stringify(data));
+      navigation.navigate('Animal');
+    })
     .catch((error) => {Alert.alert(`Error ${error}`)});
   }
   

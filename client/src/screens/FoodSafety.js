@@ -21,7 +21,7 @@ export function FoodSafety({ navigation }) {
     })
   }
 
-    const Search = () => {
+    const search = () => {
       setLoading(true)
       fetch(`http://localhost:8000/RatfoodSafety?text=${text}`).then((response) => response.json())
         .then((data) => {

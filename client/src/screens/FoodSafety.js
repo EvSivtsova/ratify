@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from 'react'
-import { Text, View, Button, ScrollView, TextInput, SafeAreaView, TouchableOpacity} from 'react-native';
+import { Text, View, Button, ScrollView, TextInput, SafeAreaView, TouchableOpacity, Image} from 'react-native';
 import { styles } from '../styles'
 import {Food} from '../components/scraperPages/foodComponent';
 import { ButtonStyles } from '../components/WelcomePage/MainButtonsStyle';
+import { WelcomeBannerStyle } from '../components/WelcomePage/WelcomeBanner/WelcomeBannerStyle';
 export function FoodSafety({ navigation }) {
 
 
@@ -49,6 +50,7 @@ export function FoodSafety({ navigation }) {
   return (
     <SafeAreaView style={styles.SafeArea}>
     <ScrollView>
+    <Image style={WelcomeBannerStyle.image} source={require('../../assets/rat.png')}/>
     <View style={styles.container}>
       <View style={ButtonStyles.button}>
       <Text style={ButtonStyles.buttonTextLarge}>Rat Food Checker:</Text>
@@ -88,6 +90,7 @@ export function FoodSafety({ navigation }) {
     return (
       <SafeAreaView style={styles.SafeArea}>
       <ScrollView>
+      <Image style={WelcomeBannerStyle.image} source={require('../../assets/guineaPig.png')}/>
       <View style={styles.container}>
         <View style={ButtonStyles.button}>
         <Text style={ButtonStyles.buttonTextLarge}>Guinea Pig Food Checker:</Text>
@@ -127,6 +130,7 @@ export function FoodSafety({ navigation }) {
   return (
     <SafeAreaView style={styles.SafeArea}>
     <ScrollView>
+    <Image style={WelcomeBannerStyle.image} source={require('../../assets/tiger.png')}/>
     <View style={styles.container}>
       <View style={ButtonStyles.button}>
       <Text style={ButtonStyles.buttonTextLarge}>Tiger Food Checker:</Text>

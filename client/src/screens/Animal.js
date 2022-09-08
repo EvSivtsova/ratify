@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Text, View, Button, ListItem, SafeAreaView, ScrollView, TouchableOpacity } from "react-native";
+import { Text, View, Button, Image, SafeAreaView, ScrollView, TouchableOpacity } from "react-native";
 import { styles } from "../styles";
 import {AnimalDetails} from "../components/animalDetails"
 import { ButtonStyles } from '../components/WelcomePage/MainButtonsStyle';
+import { WelcomeBannerStyle } from '../components/WelcomePage/WelcomeBanner/WelcomeBannerStyle';
 
 export function Animal({ navigation }) {
 
@@ -29,6 +30,9 @@ React.useEffect(() => {
     <ScrollView>
     <View style={styles.container}>
     <SafeAreaView>
+    {(pet == 'Rats') ? <Image style={WelcomeBannerStyle.image} source={require('../../assets/rat.png')}/>: <></>}
+    {(pet == 'Guinea pigs') ? <Image style={WelcomeBannerStyle.image} source={require('../../assets/guineaPig.png')}/>: <></>}
+    {(pet == 'Tigers') ? <Image style={WelcomeBannerStyle.image} source={require('../../assets/tiger.png')}/>: <></>}
       {renderDetails()}
       {(pet != 'Rats') ? <TouchableOpacity style={ButtonStyles.button} onPress={()=>setPet('Rats')}><Text style={ButtonStyles.buttonText}>Rats</Text></TouchableOpacity> : <></>}
       {(pet != 'Guinea pigs') ? <TouchableOpacity style={ButtonStyles.button} onPress={()=>setPet('Guinea pigs')}><Text style={ButtonStyles.buttonText}>Guinea Pigs</Text></TouchableOpacity> : <></> }

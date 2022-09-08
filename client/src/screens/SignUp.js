@@ -99,8 +99,10 @@ export function SignUp({ navigation }) {
             onBlur={handleBlur('lastName')}
             placeholder="Your last name"
           />
-
-          <Text>Choose your fave:</Text>     
+                <Button
+        title="Choose your fav!"
+        color="#869471"
+        />   
           <TextInput
             style={LoginStyle.inputStyle}
             value={values.animal}

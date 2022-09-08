@@ -2,8 +2,14 @@ const User = require("../models/user");
 
 const UsersController = {
   Create: async (req, res) => {
-    console.log("I'm in user controler in create mrthod")
-    if (User.findOne({ email: req.body.email } === null)) {
+    console.log("I'm in user controler in create method")
+    try {
+    if ( await User.findOne({ email: req.body.email }) !== null){
+      console.log('User already exists')
+      await res.json({
+        error: "This email is already in use.",
+       });
+    } else {
       const user = await new User(req.body);
       await user.save((err) => {
         if (err) {
@@ -11,8 +17,10 @@ const UsersController = {
         }
       })
       console.log(user);
-      res.json(user);
-      // res.json(User.findOne({ email: user.email }));
+      await res.json(user);
+      }
+    } catch(err) {
+      res.send(err);
     }
   },
   Login: (req, res) => {
@@ -28,3 +36,4 @@ const UsersController = {
 };
 
 module.exports = UsersController;
+

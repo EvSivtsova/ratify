@@ -4,7 +4,10 @@ import { styles } from '../styles'
 import { Formik, Form, Field } from 'formik';
 import { WelcomeBanner } from '../components/WelcomePage/WelcomeBanner/WelcomeBanner';
 import { LoginStyle } from '../components/LogInPage/LoginStyle';
-// import { Picker } from '@react-native-community/picker'
+// require('dotenv').config({ path: './config.env' });
+// import {process.env.API} from '../config';
+// import { API } from '../../assets/components/config.js';
+import AsyncStorage from '@react-native-async-storage/async-storage';
  
 export function SignUp({ navigation }) {
 
@@ -23,28 +26,31 @@ export function SignUp({ navigation }) {
       const newUser = values;
       console.log(newUser);
     
-      const data = await fetch(`http://localhost:8000/users/new`, {
+      await fetch(`http://localhost:8000/users/new`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(newUser),
       })
-
-      const userRecord = data.json();
-     
-      await setUser(userRecord)
-      
-      console.log(user.animal)
-        // navigation.navigate('Animal')
-        
+      .then(response => response.json())
+      .then(data => {
+        if (data.error) {
+          alert(data.error)
+          setLoading(false);
+        } else { 
+          AsyncStorage.setItem('@auth', JSON.stringify(data));
+          setLoading(false);
+        }
+      })
     } catch(error) {
+      alert('Oups!! Something went wrong. Try again')
       console.log(error);
       setLoading(false);
     }
   }
  
- return (
+  return (
    <View style={LoginStyle.container}>
     <WelcomeBanner/>
       <Formik
@@ -105,6 +111,7 @@ export function SignUp({ navigation }) {
             style={LoginStyle.LogInButton}
             title="Sign Up"
             onPress={handleSubmit}
+            loading={loading}
           >
           <Text style={LoginStyle.buttonText}>Sign Up</Text>
         </TouchableOpacity>

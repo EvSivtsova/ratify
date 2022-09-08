@@ -3,6 +3,8 @@ import { Alert, Text, TouchableOpacity, TextInput, View } from 'react-native';
 import { WelcomeBanner } from '../components/WelcomePage/WelcomeBanner/WelcomeBanner';
 import { LoginStyle } from '../components/LogInPage/LoginStyle';
 import { styles } from '../styles';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 export function LogIn({ navigation }) {
   const [email, setEmail] = useState('');
@@ -27,10 +29,17 @@ export function LogIn({ navigation }) {
       body: JSON.stringify({"email": email, "password": password})
     })
     .then((response) => response)
-    .then((data) => {console.log(data); Alert.alert(`Success ${data}`)})
+    // .then((data) => {console.log(data); Alert.alert(`Success ${data}`)})
+    .then((data) => AsyncStorage.setItem('@auth', JSON.stringify(data)))
     .catch((error) => {Alert.alert(`Error ${error}`)});
   }
   
+  const test = async () => {
+    let data = await AsyncStorage.getItem('@auth');
+    console.log("sync =>", data);
+  }
+
+  test();
   return (
     <View style={LoginStyle.container}>
       <WelcomeBanner/>

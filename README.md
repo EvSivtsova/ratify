@@ -14,15 +14,14 @@ Ratify is a mobile app created to wllow ease of use for owners of exotic pets to
 - View upcoming animal events!
 
 ## Screenshots
+![Screenshots 1](https://imgur.com/4Bwk4zs.png)
+![Screenshots 1](https://imgur.com/3KvQ1Wx.png)
 
 ## Meet the team!
 - Ev https://github.com/EvSivtsova
 - Arsenii https://github.com/Agabov123
 - Delphine https://github.com/delphiine
 - Joe https://github.com/Joseph-ER
-
-## The Ratify Rat-pository 🐀🐀
-This a
 
 ## Installation
 

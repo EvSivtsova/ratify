@@ -24,5 +24,11 @@ export const ButtonStyles = StyleSheet.create({
     color: 'white',
     fontSize: 18,
   },
+  buttonTextLarge: {
+    fontWeight: 'bold',
+    letterSpacing: 0.25,
+    color: 'white',
+    fontSize: 22,
+  },
 })
 

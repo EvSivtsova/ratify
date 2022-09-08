@@ -1,39 +1,58 @@
 import { useState } from 'react';
-import { Text, View, Button, TextInput } from 'react-native';
+import { Text, View, Button, TextInput, TouchableOpacity, } from 'react-native';
 import { styles } from '../styles'
 import { Formik, Form, Field } from 'formik';
-// import { Picker } from '@react-native-community/picker'
+import { WelcomeBanner } from '../components/WelcomePage/WelcomeBanner/WelcomeBanner';
+import { LoginStyle } from '../components/LogInPage/LoginStyle';
+// require('dotenv').config({ path: './config.env' });
+// import {process.env.API} from '../config';
+// import { API } from '../../assets/components/config.js';
+import AsyncStorage from '@react-native-async-storage/async-storage';
  
 export function SignUp({ navigation }) {
 
   const [user, setUser] = useState();
+  const [loading, setLoading] = useState(false);
 
   async function onSubmit(values) {
-    console.log('submitting')
-    const newUser = values;
-    console.log(newUser);
-   
-    await fetch(`http://localhost:8000/users/new`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newUser),
-    })
-    .then((response) => response.json())
-    .then(data => setUser(data))
-    .then(() => {
-      navigation.navigate('Animal')
-    })  
-    .catch(error => {
-      console.log(error);
+    setLoading(true);
+    if (!values.email || !values.password || !values.firstName || !values.lastName) {
+      alert('Please enter email, password and your first and last names.')
+      setLoading(false);
       return;
-    })
+    }
+    try {
+      console.log('submitting')
+      const newUser = values;
+      console.log(newUser);
+    
+      await fetch(`http://localhost:8000/users/new`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newUser),
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.error) {
+          alert(data.error)
+          setLoading(false);
+        } else { 
+          AsyncStorage.setItem('@auth', JSON.stringify(data));
+          setLoading(false);
+        }
+      })
+    } catch(error) {
+      alert('Oups!! Something went wrong. Try again')
+      console.log(error);
+      setLoading(false);
+    }
   }
  
- return (
-   <View style={styles.container}>
-      <Text>Sign Up</Text>
+  return (
+   <View style={LoginStyle.container}>
+    <WelcomeBanner/>
       <Formik
         initialValues={{
           email: '',
@@ -42,56 +61,64 @@ export function SignUp({ navigation }) {
           lastName: '',
           animal: '',
         }}
-        onSubmit= {onSubmit}
+        onSubmit={onSubmit}
       >
       {({ handleChange, handleBlur, handleSubmit, values }) => (
         <View>
-          <Text>Email:</Text>
           <TextInput
+            style={LoginStyle.inputStyle}
             onChangeText={handleChange('email')}
             onBlur={handleBlur('email')}
             value={values.email}
-            placeholder="myemail@email.com"
+            placeholder="myemail@ratify.com"
             />
 
-          <Text>Password:</Text>
           <TextInput
+            style={LoginStyle.inputStyle}
             value={values.password}
             onChangeText={handleChange('password')}
             onBlur={handleBlur('password')}
-            placeholder="Password"
+            placeholder="Password123$"
             secureTextEntry={true}
             />
 
-          <Text>First name:</Text>
           <TextInput
+            style={LoginStyle.inputStyle}
             value={values.firstName}
             onChangeText={handleChange('firstName')}
             onBlur={handleBlur('firstName')}
-            placeholder="First Name"
+            placeholder="Your first name"
             />    
 
-          <Text>Last name:</Text>     
           <TextInput
+            style={LoginStyle.inputStyle}
             value={values.lastName}
             onChangeText={handleChange('lastName')}
             onBlur={handleBlur('lastName')}
-            placeholder="Last Name"
+            placeholder="Your last name"
           />
 
-          <Text>Choose your animals:</Text>     
+          <Text>Choose your fave:</Text>     
           <TextInput
+            style={LoginStyle.inputStyle}
             value={values.animal}
             onChangeText={handleChange('animal')}
             onBlur={handleBlur('animal')}
             placeholder="Rats, Guinea pigs or Tigers"
           />
 
-        <Button onPress={handleSubmit} title="Submit" />
+          <TouchableOpacity
+            style={LoginStyle.LogInButton}
+            title="Sign Up"
+            onPress={handleSubmit}
+            loading={loading}
+          >
+          <Text style={LoginStyle.buttonText}>Sign Up</Text>
+        </TouchableOpacity>
         </View>
       )}
       </Formik>
-      <Button title="Go to Home" color="#869471" onPress={() => navigation.navigate('Welcome')} />
+      <Button title="Log in" color="#869471" onPress={() => navigation.navigate('LogIn')} />
       <Button title="My profile" color="#869471" onPress={() => navigation.navigate('Profile')} />
       <Button title="Animal" color="#869471" onPress={() => navigation.navigate('Animal')} />
       <Button title="Go back" color="#869471" onPress={() => navigation.goBack()} />

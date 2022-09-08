@@ -16,11 +16,12 @@ const mongoose = require('mongoose');
 
 const port = normalizePort(process.env.PORT || 8000);
 app.set('port', port);
+
 /**
 * Connect to MongoDB
 **/
 
-var MONGODB_URI = process.env.ATLAS_URI;
+const MONGODB_URI = process.env.ATLAS_URI || 'mongodb://0.0.0.0/ratify';
 mongoose.connect(MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -32,9 +33,6 @@ mongoose.connect(MONGODB_URI, {
   console.log("Unable to connect to MongoDB Atlas!");
   console.error(error);
 })
-
-// const db = mongoose.connection;
-// db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 /**
 * Create HTTP server.

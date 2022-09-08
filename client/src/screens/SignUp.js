@@ -41,6 +41,7 @@ export function SignUp({ navigation }) {
         } else { 
           AsyncStorage.setItem('@auth', JSON.stringify(data));
           setLoading(false);
+          navigation.navigate('Animal');
         }
       })
     } catch(error) {

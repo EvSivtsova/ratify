@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Text, View, Button, TextInput, TouchableOpacity, } from 'react-native';
+import { Text, View, Button, TextInput, TouchableOpacity, ScrollView, } from 'react-native';
 import { styles } from '../styles'
 import { Formik, Form, Field } from 'formik';
 import { WelcomeBanner } from '../components/WelcomePage/WelcomeBanner/WelcomeBanner';
@@ -53,6 +53,7 @@ export function SignUp({ navigation }) {
  
   return (
    <View style={LoginStyle.container}>
+    <ScrollView>
     <WelcomeBanner/>
       <Formik
         initialValues={{
@@ -120,9 +121,7 @@ export function SignUp({ navigation }) {
       )}
       </Formik>
       <Button title="Log in" color="#869471" onPress={() => navigation.navigate('LogIn')} />
-      <Button title="My profile" color="#869471" onPress={() => navigation.navigate('Profile')} />
-      <Button title="Animal" color="#869471" onPress={() => navigation.navigate('Animal')} />
-      <Button title="Go back" color="#869471" onPress={() => navigation.goBack()} />
+      </ScrollView>
     </View>
   );
 }

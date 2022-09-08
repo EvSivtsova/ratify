@@ -33,7 +33,6 @@ React.useEffect(() => {
       {(pet != 'Rats') ? <TouchableOpacity style={ButtonStyles.button} onPress={()=>setPet('Rats')}><Text style={ButtonStyles.buttonText}>Rats</Text></TouchableOpacity> : <></>}
       {(pet != 'Guinea pigs') ? <TouchableOpacity style={ButtonStyles.button} onPress={()=>setPet('Guinea pigs')}><Text style={ButtonStyles.buttonText}>Guinea Pigs</Text></TouchableOpacity> : <></> }
       {(pet != 'Tigers') ? <TouchableOpacity style={ButtonStyles.button} onPress={()=>setPet('Tigers')}><Text style={ButtonStyles.buttonText}>Tigers</Text></TouchableOpacity> : <></>}
-      <Text>My profile</Text>
       <Button
         title="Go to Food Safety"
         color="#869471"
@@ -46,11 +45,10 @@ React.useEffect(() => {
         onPress={() => navigation.navigate("Events")}
         />
       <Button
-        title="Go to Home"
+        title="Logout"
         color="#869471"
         onPress={() => navigation.navigate("Welcome")}
       />
-      <Button title="Go back" color="#869471" onPress={() => navigation.goBack()} />
     </SafeAreaView>
     </View>
     </ScrollView>

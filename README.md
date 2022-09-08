@@ -64,4 +64,5 @@ Either scan the QR code in your app or follow instructions to set up mobile simu
 
 Alternatively...
 ## Video demonstration link
+View the demonstration video here: https://youtu.be/FNel0j_WnTU
 

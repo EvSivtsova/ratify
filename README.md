@@ -7,13 +7,15 @@ Welcome to the Ratify!
 
 The exotic pet owner's companion app- not just for rats!
 
-Ratify is a mobile app created to wllow ease of use for owners of exotic pets to quickly and easily:
+Ratify is a mobile app created to allow ease of use for owners of exotic pets to quickly and easily:
 
 - View local vets that treat their specific animal
 - Search a comprehensive list of foods to check if they are safe or harmful for their animal
 - View upcoming animal events!
 
 ## Screenshots
+![Screenshots 1](https://imgur.com/4Bwk4zs.png)
+![Screenshots 1](https://imgur.com/3KvQ1Wx.png)
 
 ## Meet the team!
 - Ev https://github.com/EvSivtsova
@@ -21,14 +23,14 @@ Ratify is a mobile app created to wllow ease of use for owners of exotic pets to
 - Delphine https://github.com/delphiine
 - Joe https://github.com/Joseph-ER
 
-## The Ratify Rat-pository 🐀🐀
-This a
-
 ## Installation
 
 You will either need the application for Expo on your phone (Android or IOS) from the link below
 ---
-Or you will need to install Xcode on a Mac OS device.
+Or you will need to install Xcode on a Mac OS device. with 
+```
+npm i expo
+```
 ---
 
 Open 2 instances of terminal inside the base directory 'Ratify'.
@@ -46,7 +48,17 @@ npm i
 npm start
 ```
 You should see a similar response
-!!! RESPONSE IMAGE
+```
+[nodemon] 2.0.19
+[nodemon] to restart at any time, enter `rs`
+[nodemon] watching path(s): *.*
+[nodemon] watching extensions: js,mjs,json
+[nodemon] starting `node ./bin/www.js`
+I'm in users router
+I'm in animals router
+Now listening on port 8000
+Successfully connected to MongoDB Atlas!
+```
 4. In the other terminal, navigate into the 'client' folder with
 ```
 cd client/
@@ -59,9 +71,9 @@ npm i
 ```
 npm start
 ```
-Either scan the QR code in your app or follow instructions to set up mobile simulator.
----screenshot of instructions---
+Either scan the QR code that apears on your phone, or follow instructions to set up mobile simulator on macos.
 
 Alternatively...
 ## Video demonstration link
+https://www.youtube.com/watch?v=FNel0j_WnTU&ab_channel=joeshmo
 

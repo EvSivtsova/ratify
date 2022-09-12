@@ -14,7 +14,7 @@ export function Vets({ navigation }) {
       <List.Accordion
         style={LoginStyle.buttonText}
         title="Vets"
-        left={(props) => <List.Icon {...props} icon="folder" />}
+        left={(props) => <List.Icon {...props} icon="store" />}
       >
         <Text style={LoginStyle.LogInButton}>
           Find an exotic pet vet near you that. There are vets that treat a
@@ -34,7 +34,7 @@ export function Vets({ navigation }) {
       <List.Accordion
         style={LoginStyle.buttonText}
         title="Pet Shops"
-        left={(props) => <List.Icon {...props} icon="folder" />}
+        left={(props) => <List.Icon {...props} icon="store" />}
       >
         <Text style={LoginStyle.LogInButton}>
           Find an exotic pet shop near you that. There are shopss that sellitems

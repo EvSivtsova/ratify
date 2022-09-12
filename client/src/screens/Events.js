@@ -10,14 +10,14 @@ export function Events ({ navigation }) {
   const [data, setData] = useState([])
   const [pet, setPet]= useState('')
   
-  React.useEffect(() => {
-    fetch('http://localhost:8000/events').then((response) => response.json())
-    .then((data) => {
-      setData(data)
-      setLoading(false)
-    })
-    .catch((error) => console.log(error))
-  }, [])
+  // React.useEffect(() => {
+  //   fetch('http://localhost:8000/events').then((response) => response.json())
+  //   .then((data) => {
+  //     setData(data)
+  //     setLoading(false)
+  //   })
+  //   .catch((error) => console.log(error))
+  // }, [])
 
   const Events = () => {
     setLoading(true)
@@ -73,7 +73,7 @@ export function Events ({ navigation }) {
       {(pet != 'Rats') ? <Button color="#869471" title="Rats" onPress={()=>combinedFunction('Rats')}/> : <></>}
       {(pet != 'Guinea pigs') ? <Button color="#869471" title="Guinea Pigs" onPress={()=>combinedFunction('Guinea pigs')}/> : <></> }
       {(pet != 'Tigers') ? <Button color="#869471" title="Tigers" onPress={()=>combinedFunction('Tigers')}/> : <></>}
-      <Button   color="#869471" title="Go to Home" onPress={() => navigation.navigate('Welcome')} />
+      <Button   color="#869471" title="Go to Home" onPress={() => navigation.navigate('Animal')} />
       <Button  color="#869471" title="Go back" onPress={() => navigation.goBack()} />
     </View>
     </ScrollView>
@@ -101,7 +101,7 @@ export function Events ({ navigation }) {
         {(pet != 'Rats') ? <Button color="#869471" title="Rats" onPress={()=>combinedFunction('Rats')}/> : <></>}
         {(pet != 'Guinea pigs') ? <Button color="#869471" title="Guinea Pigs" onPress={()=>combinedFunction('Guinea pigs')}/> : <></> }
         {(pet != 'Tigers') ? <Button color="#869471" title="Tigers" onPress={()=>combinedFunction('Tigers')}/> : <></>}
-        <Button   color="#869471" title="Go to Home" onPress={() => navigation.navigate('Welcome')} />
+        <Button   color="#869471" title="Go to Home" onPress={() => navigation.navigate('Animal')} />
         <Button  color="#869471" title="Go back" onPress={() => navigation.goBack()} />
       </View>
       </ScrollView>
@@ -119,7 +119,7 @@ export function Events ({ navigation }) {
         {(pet != 'Rats') ? <Button color="#869471" title="Rats" onPress={()=>combinedFunction('Rats')}/> : <></>}
         {(pet != 'Guinea pigs') ? <Button color="#869471" title="Guinea Pigs" onPress={()=>combinedFunction('Guinea pigs')}/> : <></> }
         {(pet != 'Tigers') ? <Button color="#869471" title="Tigers" onPress={()=>combinedFunction('Tigers')}/> : <></>}
-        <Button   color="#869471" title="Go to Home" onPress={() => navigation.navigate('Welcome')} />
+        <Button   color="#869471" title="Go to Home" onPress={() => navigation.navigate('Animal')} />
         <Button  color="#869471" title="Go back" onPress={() => navigation.goBack()} />
       </View>
       </ScrollView>
@@ -141,7 +141,7 @@ export function Events ({ navigation }) {
       {(pet != 'Rats') ? <Button color="#869471" title="Rats" onPress={()=>setPet('Rats')}/> : <></>}
       {(pet != 'Guinea pigs') ? <Button color="#869471" title="Guinea Pigs" onPress={()=>setPet('Guinea pigs')}/> : <></> }
       {(pet != 'Tigers') ? <Button color="#869471" title="Tigers" onPress={()=>setPet('Tigers')}/> : <></>}
-      <Button color="#869471" title="Go to Home" onPress={() => navigation.navigate('Welcome')} />
+      <Button color="#869471" title="Go to Home" onPress={() => navigation.navigate('Animal')} />
       <Button color="#869471" title="Go back" onPress={() => navigation.goBack()} />
     </View>
     </ScrollView>

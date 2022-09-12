@@ -21,20 +21,27 @@ export function LogIn({ navigation }) {
       setLoading(false);
       return;
     }
-    console.log(JSON.stringify({"email": email, "password": password}))
-    
+    console.log(JSON.stringify({ email: email, password: password}))
+    try {
     fetch("http://localhost:8000/users/login", {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({"email": email, "password": password})
     })
-    .then((response) => response)
-    // .then((data) => {console.log(data); Alert.alert(`Success ${data}`)})
+    .then((response) => response.json())
     .then((data) => {
-      AsyncStorage.setItem('@auth', JSON.stringify(data));
-      navigation.navigate('Animal');
+      if (data.error) {
+        alert(data.error)
+        setLoading(false);
+      } else {
+        AsyncStorage.setItem('@auth', JSON.stringify(data));
+        setLoading(false);
+        navigation.navigate('Animal');
+      }
     })
-    .catch((error) => {Alert.alert(`Error ${error}`)});
+    } catch(error) {
+      alert(`Error ${error}`)
+    }
   }
   
   const test = async () => {
@@ -42,7 +49,8 @@ export function LogIn({ navigation }) {
     console.log("sync =>", data);
   }
 
-  test();
+  // test();
+
   return (
     <View style={LoginStyle.container}>
       <WelcomeBanner/>
